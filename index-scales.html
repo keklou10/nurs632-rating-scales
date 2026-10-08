@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Psychiatric Rating Scales</title>
+<meta name="description" content="Commonly used psychiatric screening tools and rating scales by diagnostic category and age group, with primary references. Compiled for NURS 632, George Mason University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --surface-2:#f0eee7; --text:#1d2321; --muted:#5b6461;
+  --line:#dedad0; --accent:#1f5c4a; --accent-soft:#e3efe9; --gold:#a8741a; --gold-soft:#f6ecd7;
+  --child:#2f5d8a; --child-soft:#e4edf6; --adult:#6b4a8a; --adult-soft:#efe7f6; --both:#5a5f2a; --both-soft:#eef0dc;
+  --warn:#8a3b2f; --warn-soft:#f6e3df; --shadow:0 1px 2px rgba(0,0,0,.05),0 2px 8px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141816; --surface:#1c211f; --surface-2:#232a27; --text:#e7ebe8; --muted:#9aa5a0;
+    --line:#2f3834; --accent:#7cc4a8; --accent-soft:#1f332b; --gold:#e0b25a; --gold-soft:#3a2f1a;
+    --child:#8db8e3; --child-soft:#1d2a38; --adult:#c3a3e3; --adult-soft:#2a2236; --both:#c7cd8a; --both-soft:#2a2c1c;
+    --warn:#e6998c; --warn-soft:#3a2420; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141816; --surface:#1c211f; --surface-2:#232a27; --text:#e7ebe8; --muted:#9aa5a0;
+  --line:#2f3834; --accent:#7cc4a8; --accent-soft:#1f332b; --gold:#e0b25a; --gold-soft:#3a2f1a;
+  --child:#8db8e3; --child-soft:#1d2a38; --adult:#c3a3e3; --adult-soft:#2a2236; --both:#c7cd8a; --both-soft:#2a2c1c;
+  --warn:#e6998c; --warn-soft:#3a2420; --shadow:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header.top{padding:40px 0 24px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15;margin:.35rem 0 .6rem}
+.lede{color:var(--muted);max-width:760px;margin:0}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:20px}
+.howto div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:.92rem}
+.howto b{display:block;font-size:.85rem;color:var(--accent);margin-bottom:2px}
+
+.toolbar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.toolbar .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-top:12px;padding-bottom:10px}
+.search{flex:1 1 240px;min-width:0;position:relative}
+.search input{width:100%;padding:9px 12px 9px 34px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--text);font:inherit}
+.search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:.5}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:transparent;color:var(--text);font:inherit;font-size:.9rem;padding:8px 12px;cursor:pointer;white-space:nowrap}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface);font-weight:600}
+select{font:inherit;font-size:.9rem;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--text)}
+label.chk{display:inline-flex;gap:6px;align-items:center;font-size:.9rem;cursor:pointer;white-space:nowrap}
+.count{font-size:.85rem;color:var(--muted);margin-left:auto}
+nav.cats{display:flex;gap:6px;overflow-x:auto;padding:0 16px 10px;max-width:1080px;margin:0 auto;scrollbar-width:thin}
+nav.cats a{flex:0 0 auto;font-size:.82rem;text-decoration:none;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+nav.cats a:hover{border-color:var(--accent);color:var(--accent)}
+
+main{padding:8px 0 40px}
+section.cat{padding-top:28px;scroll-margin-top:120px}
+section.cat>h2{font-family:"Source Serif 4",Georgia,serif;font-size:1.5rem;margin:0 0 4px}
+.catnote{color:var(--muted);font-size:.95rem;margin:0 0 12px;max-width:820px}
+h3.grp{font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;margin:18px 0 8px;display:flex;align-items:center;gap:8px}
+h3.grp::after{content:"";flex:1;height:1px;background:var(--line)}
+h3.grp.c{color:var(--child)} h3.grp.a{color:var(--adult)} h3.grp.b{color:var(--both)}
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow)}
+.tool.hy{border-left:4px solid var(--gold)}
+.thead{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
+.tname{font-weight:700;font-size:1.05rem}
+.tfull{color:var(--muted);font-size:.95rem}
+.badges{display:flex;flex-wrap:wrap;gap:5px;margin:7px 0 6px}
+.b{font-size:.74rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);color:var(--muted);white-space:nowrap}
+.b.c{background:var(--child-soft);color:var(--child)} .b.a{background:var(--adult-soft);color:var(--adult)} .b.bo{background:var(--both-soft);color:var(--both)}
+.b.hy{background:var(--gold-soft);color:var(--gold)} .b.pr{background:var(--warn-soft);color:var(--warn)}
+.tool p{margin:0 0 6px;font-size:.95rem}
+.refs{margin:6px 0 0;padding:8px 0 0 0;border-top:1px dashed var(--line);list-style:none;font-size:.84rem;color:var(--muted)}
+.refs li{margin:3px 0;padding-left:14px;text-indent:-14px}
+.refs li::before{content:"› ";color:var(--accent)}
+.refs a{font-weight:600;text-decoration:none;white-space:nowrap}
+.refs a:hover{text-decoration:underline}
+.empty{padding:40px 0;text-align:center;color:var(--muted);display:none}
+.guide li{margin:6px 0;font-size:.93rem}
+.guide .refline{color:var(--muted);font-size:.84rem}
+footer{border-top:1px solid var(--line);padding:24px 0 48px;color:var(--muted);font-size:.88rem}
+footer p{margin:.4rem 0;max-width:820px}
+.theme{background:var(--surface);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:8px 10px;font:inherit;font-size:.85rem;cursor:pointer}
+@media (max-width:640px){
+  .count{width:100%;margin-left:0}
+  .seg button{padding:7px 9px;font-size:.84rem}
+}
+@media print{
+  .toolbar,nav.cats,.theme{display:none}
+  body{background:#fff;color:#000;font-size:11pt}
+  .tool{break-inside:avoid;box-shadow:none}
+  .refs a{display:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">NURS 632 · Pathogenesis of Mental Disorders · George Mason University</div>
+    <h1>Psychiatric Screening Tools &amp; Rating Scales</h1>
+    <p class="lede">Commonly used instruments by diagnostic category, separated into children/adolescents and adults wherever the evidence base allows. Each entry lists what the tool is for, key scoring or evidence points, and its primary reference(s).</p>
+    <div class="howto">
+      <div><b>Screen vs. measure vs. diagnose</b>A positive screen is never a diagnosis. Severity scales track change over time; structured interviews support diagnosis.</div>
+      <div><b>★ High-yield</b>Tools you are most likely to use in practice and see on boards. Learn their purpose, population, and what a positive result means.</div>
+      <div><b>Cutoffs vary</b>Thresholds differ by population and setting. Confirm against the original source before applying a cutoff clinically.</div>
+      <div><b>References</b>The PubMed link runs a search on the article title so you can pull the abstract or full text.</div>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Search tools or keywords (e.g., MoCA, perinatal)" aria-label="Search tools">
+    </div>
+    <div class="seg" role="group" aria-label="Age group">
+      <button data-age="all" aria-pressed="true">All ages</button>
+      <button data-age="c" aria-pressed="false">Children &amp; adolescents</button>
+      <button data-age="a" aria-pressed="false">Adults</button>
+    </div>
+    <select id="type" aria-label="Purpose">
+      <option value="">Any purpose</option>
+      <option>Screening</option>
+      <option>Severity / monitoring</option>
+      <option>Diagnostic interview</option>
+      <option>Adverse effects</option>
+      <option>Function / staging</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="hy"> ★ High-yield only</label>
+    <button class="theme" id="theme" type="button" aria-label="Toggle color theme">◐ Theme</button>
+    <span class="count" id="count"></span>
+  </div>
+  <nav class="cats" id="nav" aria-label="Categories"></nav>
+</div>
+
+<main class="wrap" id="main"></main>
+<div class="wrap"><p class="empty" id="empty">No tools match these filters.</p></div>
+
+<section class="wrap cat" id="guidelines">
+  <h2 style="font-family:'Source Serif 4',Georgia,serif;font-size:1.5rem;margin:0 0 4px">Guidelines that support screening</h2>
+  <p class="catnote">Recommendation statements behind routine screening. USPSTF statements are periodically updated; check <a href="https://www.uspreventiveservicestaskforce.org" target="_blank" rel="noopener">uspreventiveservicestaskforce.org</a> for the current version.</p>
+  <ul class="guide" id="guide"></ul>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Educational use only.</strong> This page is a study reference for PMHNP students and does not replace the instrument manuals, original validation studies, or clinical judgment. Several instruments are proprietary and require purchase, licensing, or training (flagged “Proprietary/licensed”). Public availability of the others should be confirmed with the developer before clinical use.</p>
+    <p>Compiled by K. Pierre Eklou, DNP, APRN, PMHNP-BC, for NURS 632. Last updated October 2026.</p>
+  </div>
+</footer>
+
+<script>
+const PM = t => "https://pubmed.ncbi.nlm.nih.gov/?term=" + encodeURIComponent(t);
+
+/* ---------- DATA ----------
+ a: "c" = children/adolescents, "a" = adults, "b" = both
+ t: purpose   r: rater   hy: high-yield   pr: proprietary/licensed
+ refs: { c: citation, pm: article title for PubMed search (omit for books/manuals) }
+*/
+const DATA = [
+{ id:"cross", title:"Cross-cutting measures & diagnostic interviews",
+  note:"Broad-band tools that screen across domains or structure a full diagnostic assessment. Useful at intake before narrowing to disorder-specific scales.",
+  tools:[
+  {n:"DSM-5-TR Level 1 CCSM", f:"Cross-Cutting Symptom Measure", a:"b", t:"Screening", r:"Self / parent", hy:true,
+   k:"Adult self-rated version (23 items, 13 domains) and parent-rated (ages 6–17) and child self-rated (11–17) versions. Flags domains that need Level 2 follow-up. Free from the APA.",
+   refs:[{c:"Narrow WE, Clarke DE, Kuramoto SJ, et al. DSM-5 field trials in the United States and Canada, Part III: development and reliability testing of a cross-cutting symptom assessment for DSM-5. Am J Psychiatry. 2013;170(1):71-82.", pm:"DSM-5 field trials in the United States and Canada, Part III cross-cutting symptom assessment"}]},
+  {n:"MINI", f:"Mini-International Neuropsychiatric Interview", a:"a", t:"Diagnostic interview", r:"Clinician",
+   k:"Short structured interview (~15 minutes) covering major DSM/ICD disorders. Common in research and as a rapid diagnostic check.",
+   refs:[{c:"Sheehan DV, Lecrubier Y, Sheehan KH, et al. The Mini-International Neuropsychiatric Interview (M.I.N.I.): the development and validation of a structured diagnostic psychiatric interview for DSM-IV and ICD-10. J Clin Psychiatry. 1998;59(Suppl 20):22-33.", pm:"Mini-International Neuropsychiatric Interview development and validation of a structured diagnostic psychiatric interview"}]},
+  {n:"MINI-KID", f:"MINI for Children and Adolescents", a:"c", t:"Diagnostic interview", r:"Clinician (child + parent)",
+   k:"Pediatric adaptation of the MINI; shorter than the K-SADS with good concordance in the validation study.",
+   refs:[{c:"Sheehan DV, Sheehan KH, Shytle RD, et al. Reliability and validity of the Mini International Neuropsychiatric Interview for Children and Adolescents (MINI-KID). J Clin Psychiatry. 2010;71(3):313-326.", pm:"Reliability and validity of the Mini International Neuropsychiatric Interview for Children and Adolescents (MINI-KID)"}]},
+  {n:"SCID-5-CV", f:"Structured Clinical Interview for DSM-5, Clinician Version", a:"a", t:"Diagnostic interview", r:"Clinician", pr:true,
+   k:"Semi-structured interview long treated as the reference standard for adult DSM diagnosis.",
+   refs:[{c:"First MB, Williams JBW, Karg RS, Spitzer RL. Structured Clinical Interview for DSM-5 Disorders, Clinician Version (SCID-5-CV). Arlington, VA: American Psychiatric Association Publishing; 2016."}]},
+  {n:"K-SADS-PL", f:"Schedule for Affective Disorders and Schizophrenia for School-Age Children, Present and Lifetime", a:"c", t:"Diagnostic interview", r:"Clinician (child + parent)", hy:true,
+   k:"Semi-structured interview for ages 6–18; the most widely used research diagnostic interview in child psychiatry. Interviews both parent and child.",
+   refs:[{c:"Kaufman J, Birmaher B, Brent D, et al. Schedule for Affective Disorders and Schizophrenia for School-Age Children-Present and Lifetime Version (K-SADS-PL): initial reliability and validity data. J Am Acad Child Adolesc Psychiatry. 1997;36(7):980-988.", pm:"Schedule for Affective Disorders and Schizophrenia for School-Age Children-Present and Lifetime Version (K-SADS-PL): initial reliability and validity data"}]},
+  {n:"CGI-S / CGI-I", f:"Clinical Global Impression – Severity / Improvement", a:"b", t:"Severity / monitoring", r:"Clinician", hy:true,
+   k:"Single-item 7-point ratings of overall illness severity and change since baseline. Ubiquitous secondary outcome in psychopharmacology trials and easy to use in clinic.",
+   refs:[{c:"Guy W. ECDEU Assessment Manual for Psychopharmacology. Rockville, MD: US Department of Health, Education, and Welfare; 1976."},
+         {c:"Busner J, Targum SD. The clinical global impressions scale: applying a research tool in clinical practice. Psychiatry (Edgmont). 2007;4(7):28-37.", pm:"The clinical global impressions scale: applying a research tool in clinical practice"}]},
+  {n:"WHODAS 2.0", f:"WHO Disability Assessment Schedule 2.0", a:"a", t:"Function / staging", r:"Self / clinician",
+   k:"Measures functioning across six domains (cognition, mobility, self-care, getting along, life activities, participation). Included in DSM-5 Section III.",
+   refs:[{c:"Üstün TB, Kostanjsek N, Chatterji S, Rehm J, eds. Measuring Health and Disability: Manual for WHO Disability Assessment Schedule (WHODAS 2.0). Geneva: World Health Organization; 2010."}]},
+  {n:"PSC-17", f:"Pediatric Symptom Checklist-17", a:"c", t:"Screening", r:"Parent (youth version exists)", hy:true,
+   k:"Brief psychosocial screen for primary care. Total ≥15 is positive; subscale cutoffs: internalizing ≥5, attention ≥7, externalizing ≥7. Derived from the 35-item PSC.",
+   refs:[{c:"Jellinek MS, Murphy JM, Robinson J, Feins A, Lamb S, Fenton T. Pediatric Symptom Checklist: screening school-age children for psychosocial dysfunction. J Pediatr. 1988;112(2):201-209.", pm:"Pediatric Symptom Checklist: screening school-age children for psychosocial dysfunction"},
+         {c:"Gardner W, Murphy M, Childs G, et al. The PSC-17: a brief pediatric symptom checklist with psychosocial problem subscales. A report from PROS and ASPN. Ambul Child Health. 1999;5(3):225-236."}]},
+  {n:"SDQ", f:"Strengths and Difficulties Questionnaire", a:"c", t:"Screening", r:"Parent / teacher / self (11–17)",
+   k:"25-item broad-band screen with emotional, conduct, hyperactivity, peer, and prosocial subscales. Free and available in many languages.",
+   refs:[{c:"Goodman R. The Strengths and Difficulties Questionnaire: a research note. J Child Psychol Psychiatry. 1997;38(5):581-586.", pm:"The Strengths and Difficulties Questionnaire: a research note"}]},
+  {n:"CBCL (ASEBA)", f:"Child Behavior Checklist, with TRF and YSR", a:"c", t:"Screening", r:"Parent / teacher / youth", pr:true,
+   k:"Comprehensive normed rating system (internalizing, externalizing, syndrome and DSM-oriented scales). School-age forms cover ages 6–18; preschool forms are separate.",
+   refs:[{c:"Achenbach TM, Rescorla LA. Manual for the ASEBA School-Age Forms & Profiles. Burlington, VT: University of Vermont, Research Center for Children, Youth, & Families; 2001."}]},
+  {n:"HEEADSSS", f:"Home, Education/Employment, Eating, Activities, Drugs, Sexuality, Suicide/depression, Safety", a:"c", t:"Screening", r:"Clinician interview",
+   k:"Psychosocial interview framework for adolescents. Not a scored instrument, but the standard structure for a confidential adolescent history.",
+   refs:[{c:"Goldenring JM, Cohen E. Getting into adolescent heads. Contemp Pediatr. 1988;5(7):75-90."},
+         {c:"Goldenring JM, Rosen DS. Getting into adolescent heads: an essential update. Contemp Pediatr. 2004;21(1):64-90."}]}
+  ]},
+
+{ id:"dep", title:"Depressive disorders",
+  note:"Separate brief screeners (PHQ-2, PHQ-9) from clinician-rated severity scales used in trials (HAM-D, MADRS, CDRS-R). Use population-specific tools for perinatal patients and older adults.",
+  tools:[
+  {n:"PHQ-A / PHQ-9 (adolescent)", f:"Patient Health Questionnaire for Adolescents", a:"c", t:"Screening", r:"Self-report", hy:true,
+   k:"In adolescents 13–17, a PHQ-9 score ≥11 detected major depression with high sensitivity (Richardson 2010). USPSTF recommends MDD screening ages 12–18. Item 9 requires same-day follow-up.",
+   refs:[{c:"Johnson JG, Harris ES, Spitzer RL, Williams JB. The Patient Health Questionnaire for Adolescents: validation of an instrument for the assessment of mental disorders among adolescent primary care patients. J Adolesc Health. 2002;30(3):196-204.", pm:"The Patient Health Questionnaire for Adolescents: validation of an instrument for the assessment of mental disorders among adolescent primary care patients"},
+         {c:"Richardson LP, McCauley E, Grossman DC, et al. Evaluation of the Patient Health Questionnaire-9 Item for detecting major depression among adolescents. Pediatrics. 2010;126(6):1117-1123.", pm:"Evaluation of the Patient Health Questionnaire-9 Item for detecting major depression among adolescents"}]},
+  {n:"CDI-2", f:"Children's Depression Inventory, 2nd ed.", a:"c", t:"Screening", r:"Self / parent / teacher", pr:true,
+   k:"Self-report for ages 7–17 with parent and teacher forms. Long-standing standard in pediatric depression research.",
+   refs:[{c:"Kovacs M. Children's Depression Inventory 2 (CDI 2): Technical Manual. North Tonawanda, NY: Multi-Health Systems; 2011."}]},
+  {n:"CDRS-R", f:"Children's Depression Rating Scale – Revised", a:"c", t:"Severity / monitoring", r:"Clinician", pr:true, hy:true,
+   k:"17-item clinician interview drawing on child and parent report. The usual primary outcome in pediatric antidepressant trials, the pediatric counterpart of the HAM-D.",
+   refs:[{c:"Poznanski EO, Mokros HB. Children's Depression Rating Scale, Revised (CDRS-R) Manual. Los Angeles, CA: Western Psychological Services; 1996."}]},
+  {n:"MFQ / SMFQ", f:"Mood and Feelings Questionnaire / Short MFQ", a:"c", t:"Screening", r:"Self / parent",
+   k:"The 13-item short form was developed for epidemiological screening. Free, with parallel child and parent versions.",
+   refs:[{c:"Angold A, Costello EJ, Messer SC, Pickles A, Winder F, Silver D. Development of a short questionnaire for use in epidemiological studies of depression in children and adolescents. Int J Methods Psychiatr Res. 1995;5:237-249."}]},
+  {n:"RCADS", f:"Revised Child Anxiety and Depression Scale", a:"c", t:"Screening", r:"Self / parent",
+   k:"47 items for ages 8–18 with a depression subscale and five anxiety subscales mapped to DSM. Free; useful when anxiety and depression co-occur.",
+   refs:[{c:"Chorpita BF, Yim L, Moffitt C, Umemoto LA, Francis SE. Assessment of symptoms of DSM-IV anxiety and depression in children: a revised child anxiety and depression scale. Behav Res Ther. 2000;38(8):835-855.", pm:"Assessment of symptoms of DSM-IV anxiety and depression in children: a revised child anxiety and depression scale"}]},
+  {n:"PHQ-9", f:"Patient Health Questionnaire-9", a:"a", t:"Screening", r:"Self-report", hy:true,
+   k:"Score ≥10 had 88% sensitivity and 88% specificity for MDD in the original study. Severity: 5/10/15/20 = mild/moderate/moderately severe/severe. Also used for measurement-based care. A positive item 9 needs a suicide risk assessment.",
+   refs:[{c:"Kroenke K, Spitzer RL, Williams JBW. The PHQ-9: validity of a brief depression severity measure. J Gen Intern Med. 2001;16(9):606-613.", pm:"The PHQ-9: validity of a brief depression severity measure"}]},
+  {n:"PHQ-2", f:"Patient Health Questionnaire-2", a:"a", t:"Screening", r:"Self-report", hy:true,
+   k:"First two PHQ-9 items (anhedonia, depressed mood). A score ≥3 is positive; follow with the full PHQ-9.",
+   refs:[{c:"Kroenke K, Spitzer RL, Williams JB. The Patient Health Questionnaire-2: validity of a two-item depression screener. Med Care. 2003;41(11):1284-1292.", pm:"The Patient Health Questionnaire-2: validity of a two-item depression screener"}]},
+  {n:"HAM-D (HDRS)", f:"Hamilton Depression Rating Scale", a:"a", t:"Severity / monitoring", r:"Clinician", hy:true,
+   k:"17-item clinician rating and the classic outcome measure in antidepressant trials. Weighted toward somatic and sleep items, which can inflate scores in medically ill patients.",
+   refs:[{c:"Hamilton M. A rating scale for depression. J Neurol Neurosurg Psychiatry. 1960;23:56-62.", pm:"Hamilton M A rating scale for depression 1960"}]},
+  {n:"MADRS", f:"Montgomery–Åsberg Depression Rating Scale", a:"a", t:"Severity / monitoring", r:"Clinician",
+   k:"10 items designed to be sensitive to change, with fewer somatic items than the HAM-D. Frequently used in trials, including treatment-resistant depression.",
+   refs:[{c:"Montgomery SA, Åsberg M. A new depression scale designed to be sensitive to change. Br J Psychiatry. 1979;134:382-389.", pm:"A new depression scale designed to be sensitive to change"}]},
+  {n:"BDI-II", f:"Beck Depression Inventory-II", a:"b", t:"Severity / monitoring", r:"Self-report", pr:true,
+   k:"21 items, normed for ages 13 and older. Bands: 0–13 minimal, 14–19 mild, 20–28 moderate, 29–63 severe.",
+   refs:[{c:"Beck AT, Steer RA, Brown GK. Manual for the Beck Depression Inventory-II. San Antonio, TX: Psychological Corporation; 1996."}]},
+  {n:"QIDS-SR16", f:"Quick Inventory of Depressive Symptomatology – Self-Report", a:"a", t:"Severity / monitoring", r:"Self / clinician",
+   k:"16 items covering the nine DSM criterion domains. Used for measurement-based care in STAR*D. Free.",
+   refs:[{c:"Rush AJ, Trivedi MH, Ibrahim HM, et al. The 16-Item Quick Inventory of Depressive Symptomatology (QIDS), clinician rating (QIDS-C), and self-report (QIDS-SR): a psychometric evaluation in patients with chronic major depression. Biol Psychiatry. 2003;54(5):573-583.", pm:"The 16-Item Quick Inventory of Depressive Symptomatology (QIDS), clinician rating (QIDS-C), and self-report (QIDS-SR)"}]},
+  {n:"GDS / GDS-15", f:"Geriatric Depression Scale", a:"a", t:"Screening", r:"Self-report", hy:true,
+   k:"Yes/no format that avoids somatic items, which helps in older adults with medical comorbidity. On the 15-item form, ≥5 suggests depression. Interpret cautiously in moderate–severe dementia.",
+   refs:[{c:"Yesavage JA, Brink TL, Rose TL, et al. Development and validation of a geriatric depression screening scale: a preliminary report. J Psychiatr Res. 1982-1983;17(1):37-49.", pm:"Development and validation of a geriatric depression screening scale: a preliminary report"},
+         {c:"Sheikh JI, Yesavage JA. Geriatric Depression Scale (GDS): recent evidence and development of a shorter version. Clin Gerontol. 1986;5(1-2):165-173."}]},
+  {n:"CSDD", f:"Cornell Scale for Depression in Dementia", a:"a", t:"Severity / monitoring", r:"Clinician (caregiver + patient)",
+   k:"19 items rated from caregiver and patient interviews. Preferred over self-report scales when dementia limits reliable self-report.",
+   refs:[{c:"Alexopoulos GS, Abrams RC, Young RC, Shamoian CA. Cornell Scale for Depression in Dementia. Biol Psychiatry. 1988;23(3):271-284.", pm:"Alexopoulos Cornell Scale for Depression in Dementia 1988"}]},
+  {n:"EPDS", f:"Edinburgh Postnatal Depression Scale", a:"a", t:"Screening", r:"Self-report", hy:true,
+   k:"10 items for pregnancy and postpartum (also studied in partners). Avoids somatic items that overlap with normal pregnancy. Cutoffs of roughly 10–13 are used depending on purpose. Item 10 asks about self-harm.",
+   refs:[{c:"Cox JL, Holden JM, Sagovsky R. Detection of postnatal depression: development of the 10-item Edinburgh Postnatal Depression Scale. Br J Psychiatry. 1987;150:782-786.", pm:"Detection of postnatal depression: development of the 10-item Edinburgh Postnatal Depression Scale"}]}
+  ]},
+
+{ id:"bip", title:"Bipolar and related disorders",
+  note:"Screen for a history of mania/hypomania before starting an antidepressant. Screeners pick up bipolar I better than bipolar II. In youth, parent report outperforms teacher and often youth report for manic symptoms.",
+  tools:[
+  {n:"P-GBI", f:"Parent General Behavior Inventory", a:"c", t:"Screening", r:"Parent",
+   k:"73-item parent report with depressive and hypomanic/biphasic scales. High hypomanic/biphasic scores substantially raise the likelihood of a bipolar spectrum diagnosis. Short 10-item mania forms exist.",
+   refs:[{c:"Youngstrom EA, Findling RL, Danielson CK, Calabrese JR. Discriminative validity of parent report of hypomanic and depressive symptoms on the General Behavior Inventory. Psychol Assess. 2001;13(2):267-276.", pm:"Discriminative validity of parent report of hypomanic and depressive symptoms on the General Behavior Inventory"}]},
+  {n:"CMRS-P", f:"Child Mania Rating Scale – Parent", a:"c", t:"Screening", r:"Parent",
+   k:"Parent-rated mania scale built on DSM criteria, developed to separate pediatric bipolar disorder from ADHD and healthy controls.",
+   refs:[{c:"Pavuluri MN, Henry DB, Devineni B, Carbray JA, Birmaher B. Child Mania Rating Scale: development, reliability, and validity. J Am Acad Child Adolesc Psychiatry. 2006;45(5):550-560.", pm:"Child Mania Rating Scale: development, reliability, and validity"}]},
+  {n:"MDQ-A", f:"Mood Disorder Questionnaire – Adolescent (parent version)", a:"c", t:"Screening", r:"Parent",
+   k:"Adaptation of the adult MDQ for adolescents ages 12–17. The parent-report version performed better than adolescent self-report.",
+   refs:[{c:"Wagner KD, Hirschfeld RM, Emslie GJ, Findling RL, Gracious BL, Reed ML. Validation of the Mood Disorder Questionnaire for bipolar disorders in adolescents. J Clin Psychiatry. 2006;67(5):827-830.", pm:"Validation of the Mood Disorder Questionnaire for bipolar disorders in adolescents"}]},
+  {n:"YMRS", f:"Young Mania Rating Scale", a:"b", t:"Severity / monitoring", r:"Clinician", hy:true,
+   k:"11-item clinician rating and the standard outcome in adult mania trials. Also widely used as the outcome in pediatric mania trials.",
+   refs:[{c:"Young RC, Biggs JT, Ziegler VE, Meyer DA. A rating scale for mania: reliability, validity and sensitivity. Br J Psychiatry. 1978;133:429-435.", pm:"A rating scale for mania: reliability, validity and sensitivity"}]},
+  {n:"MDQ", f:"Mood Disorder Questionnaire", a:"a", t:"Screening", r:"Self-report", hy:true,
+   k:"Positive screen requires ≥7 of 13 symptom items, symptoms in the same period, and moderate or serious problems. In the original outpatient sample, sensitivity was 0.73 and specificity 0.90. Less sensitive for bipolar II.",
+   refs:[{c:"Hirschfeld RM, Williams JB, Spitzer RL, et al. Development and validation of a screening instrument for bipolar spectrum disorder: the Mood Disorder Questionnaire. Am J Psychiatry. 2000;157(11):1873-1875.", pm:"Development and validation of a screening instrument for bipolar spectrum disorder: the Mood Disorder Questionnaire"}]},
+  {n:"HCL-32", f:"Hypomania Checklist-32", a:"a", t:"Screening", r:"Self-report",
+   k:"32-item checklist designed to detect hypomanic symptoms. Often preferred when bipolar II is the concern.",
+   refs:[{c:"Angst J, Adolfsson R, Benazzi F, et al. The HCL-32: towards a self-assessment tool for hypomanic symptoms in outpatients. J Affect Disord. 2005;88(2):217-233.", pm:"The HCL-32: towards a self-assessment tool for hypomanic symptoms in outpatients"}]},
+  {n:"ASRM", f:"Altman Self-Rating Mania Scale", a:"a", t:"Severity / monitoring", r:"Self-report",
+   k:"5-item self-rating of current manic symptoms for tracking over time.",
+   refs:[{c:"Altman EG, Hedeker D, Peterson JL, Davis JM. The Altman Self-Rating Mania Scale. Biol Psychiatry. 1997;42(10):948-955.", pm:"The Altman Self-Rating Mania Scale"}]}
+  ]},
+
+{ id:"anx", title:"Anxiety disorders",
+  note:"GAD-7 and SCARED are the workhorse screeners. USPSTF recommends anxiety screening in children 8–18 and adults through age 64.",
+  tools:[
+  {n:"GAD-7", f:"Generalized Anxiety Disorder-7", a:"b", t:"Screening", r:"Self-report", hy:true,
+   k:"Adults: ≥10 gave 89% sensitivity and 82% specificity for GAD; severity 5/10/15 = mild/moderate/severe. Also detects panic, social anxiety, and PTSD less precisely. Adolescents with GAD: ≥11 and ≥17 best identified moderate and severe anxiety (Mossman 2017).",
+   refs:[{c:"Spitzer RL, Kroenke K, Williams JBW, Löwe B. A brief measure for assessing generalized anxiety disorder: the GAD-7. Arch Intern Med. 2006;166(10):1092-1097.", pm:"A brief measure for assessing generalized anxiety disorder: the GAD-7"},
+         {c:"Mossman SA, Luft MJ, Schroeder HK, et al. The Generalized Anxiety Disorder 7-item scale in adolescents with generalized anxiety disorder: signal detection and validation. Ann Clin Psychiatry. 2017;29(4):227-234A.", pm:"The Generalized Anxiety Disorder 7-item scale in adolescents with generalized anxiety disorder: signal detection and validation"}]},
+  {n:"SCARED", f:"Screen for Child Anxiety Related Emotional Disorders", a:"c", t:"Screening", r:"Self / parent", hy:true,
+   k:"41 items for ages 8–18 with panic/somatic, generalized anxiety, separation, social, and school-avoidance subscales. A total ≥25 suggests an anxiety disorder. Free.",
+   refs:[{c:"Birmaher B, Khetarpal S, Brent D, et al. The Screen for Child Anxiety Related Emotional Disorders (SCARED): scale construction and psychometric characteristics. J Am Acad Child Adolesc Psychiatry. 1997;36(4):545-553.", pm:"The Screen for Child Anxiety Related Emotional Disorders (SCARED): scale construction and psychometric characteristics"},
+         {c:"Birmaher B, Brent DA, Chiappetta L, Bridge J, Monga S, Baugher M. Psychometric properties of the Screen for Child Anxiety Related Emotional Disorders (SCARED): a replication study. J Am Acad Child Adolesc Psychiatry. 1999;38(10):1230-1236.", pm:"Psychometric properties of the Screen for Child Anxiety Related Emotional Disorders (SCARED): a replication study"}]},
+  {n:"PARS", f:"Pediatric Anxiety Rating Scale", a:"c", t:"Severity / monitoring", r:"Clinician", hy:true,
+   k:"50-item symptom checklist plus 7 severity dimensions rated 0–5. Primary outcome in pediatric anxiety trials such as CAMS.",
+   refs:[{c:"Research Units on Pediatric Psychopharmacology Anxiety Study Group. The Pediatric Anxiety Rating Scale (PARS): development and psychometric properties. J Am Acad Child Adolesc Psychiatry. 2002;41(9):1061-1069.", pm:"The Pediatric Anxiety Rating Scale (PARS): development and psychometric properties"}]},
+  {n:"SCAS", f:"Spence Children's Anxiety Scale", a:"c", t:"Screening", r:"Self / parent",
+   k:"Subscales map to DSM anxiety disorders (separation, social, OCD, panic/agoraphobia, physical injury fears, generalized). Free.",
+   refs:[{c:"Spence SH. A measure of anxiety symptoms among children. Behav Res Ther. 1998;36(5):545-566.", pm:"Spence A measure of anxiety symptoms among children 1998"}]},
+  {n:"MASC / MASC 2", f:"Multidimensional Anxiety Scale for Children", a:"c", t:"Severity / monitoring", r:"Self / parent", pr:true,
+   k:"Normed self-report for ages 8–19 with physical symptoms, harm avoidance, social, and separation anxiety factors.",
+   refs:[{c:"March JS, Parker JD, Sullivan K, Stallings P, Conners CK. The Multidimensional Anxiety Scale for Children (MASC): factor structure, reliability, and validity. J Am Acad Child Adolesc Psychiatry. 1997;36(4):554-565.", pm:"The Multidimensional Anxiety Scale for Children (MASC): factor structure, reliability, and validity"}]},
+  {n:"GAD-2", f:"Generalized Anxiety Disorder-2", a:"a", t:"Screening", r:"Self-report",
+   k:"First two GAD-7 items. ≥3 is positive; follow with the GAD-7.",
+   refs:[{c:"Kroenke K, Spitzer RL, Williams JB, Monahan PO, Löwe B. Anxiety disorders in primary care: prevalence, impairment, comorbidity, and detection. Ann Intern Med. 2007;146(5):317-325.", pm:"Anxiety disorders in primary care: prevalence, impairment, comorbidity, and detection"}]},
+  {n:"HAM-A", f:"Hamilton Anxiety Rating Scale", a:"a", t:"Severity / monitoring", r:"Clinician", hy:true,
+   k:"14-item clinician rating of psychic and somatic anxiety. Classic outcome in anxiolytic trials.",
+   refs:[{c:"Hamilton M. The assessment of anxiety states by rating. Br J Med Psychol. 1959;32(1):50-55.", pm:"The assessment of anxiety states by rating"}]},
+  {n:"BAI", f:"Beck Anxiety Inventory", a:"a", t:"Severity / monitoring", r:"Self-report", pr:true,
+   k:"21 items weighted toward physiologic and panic-type symptoms.",
+   refs:[{c:"Beck AT, Epstein N, Brown G, Steer RA. An inventory for measuring clinical anxiety: psychometric properties. J Consult Clin Psychol. 1988;56(6):893-897.", pm:"An inventory for measuring clinical anxiety: psychometric properties"}]},
+  {n:"PDSS", f:"Panic Disorder Severity Scale", a:"a", t:"Severity / monitoring", r:"Clinician (self-report version exists)",
+   k:"7 items covering attack frequency, distress, anticipatory anxiety, avoidance, and impairment.",
+   refs:[{c:"Shear MK, Brown TA, Barlow DH, et al. Multicenter collaborative panic disorder severity scale. Am J Psychiatry. 1997;154(11):1571-1575.", pm:"Multicenter collaborative panic disorder severity scale"}]},
+  {n:"LSAS", f:"Liebowitz Social Anxiety Scale", a:"a", t:"Severity / monitoring", r:"Clinician or self",
+   k:"Rates fear and avoidance across 24 social and performance situations. Standard outcome in social anxiety trials.",
+   refs:[{c:"Liebowitz MR. Social phobia. Mod Probl Pharmacopsychiatry. 1987;22:141-173.", pm:"Liebowitz Social phobia Mod Probl Pharmacopsychiatry 1987"}]},
+  {n:"SPIN", f:"Social Phobia Inventory", a:"a", t:"Screening", r:"Self-report",
+   k:"17-item self-report of fear, avoidance, and physiologic symptoms in social situations.",
+   refs:[{c:"Connor KM, Davidson JR, Churchill LE, Sherwood A, Foa E, Weisler RH. Psychometric properties of the Social Phobia Inventory (SPIN): new self-rating scale. Br J Psychiatry. 2000;176:379-386.", pm:"Psychometric properties of the Social Phobia Inventory (SPIN)"}]},
+  {n:"GAI", f:"Geriatric Anxiety Inventory", a:"a", t:"Screening", r:"Self-report",
+   k:"20 agree/disagree items with few somatic items, designed for older adults.",
+   refs:[{c:"Pachana NA, Byrne GJ, Siddle H, Koloski N, Harley E, Arnold E. Development and validation of the Geriatric Anxiety Inventory. Int Psychogeriatr. 2007;19(1):103-114.", pm:"Development and validation of the Geriatric Anxiety Inventory"}]}
+  ]},
+
+{ id:"ocd", title:"Obsessive-compulsive and related disorders",
+  note:"Y-BOCS/CY-BOCS are the reference severity measures. A ≥35% drop in Y-BOCS score is the conventional definition of treatment response.",
+  tools:[
+  {n:"CY-BOCS", f:"Children's Yale-Brown Obsessive Compulsive Scale", a:"c", t:"Severity / monitoring", r:"Clinician (child + parent)", hy:true,
+   k:"Pediatric adaptation of the Y-BOCS (0–40) with a symptom checklist and severity items. Primary outcome in pediatric OCD trials, including POTS.",
+   refs:[{c:"Scahill L, Riddle MA, McSwiggin-Hardin M, et al. Children's Yale-Brown Obsessive Compulsive Scale: reliability and validity. J Am Acad Child Adolesc Psychiatry. 1997;36(6):844-852.", pm:"Children's Yale-Brown Obsessive Compulsive Scale: reliability and validity"}]},
+  {n:"OCI-CV", f:"Obsessive Compulsive Inventory – Child Version", a:"c", t:"Screening", r:"Self-report",
+   k:"21-item child self-report across symptom dimensions.",
+   refs:[{c:"Foa EB, Coles M, Huppert JD, Pasupuleti RV, Franklin ME, March J. Development and validation of a child version of the Obsessive Compulsive Inventory. Behav Ther. 2010;41(1):121-132.", pm:"Development and validation of a child version of the Obsessive Compulsive Inventory"}]},
+  {n:"Y-BOCS", f:"Yale-Brown Obsessive Compulsive Scale", a:"a", t:"Severity / monitoring", r:"Clinician", hy:true,
+   k:"10 severity items (0–40) plus a symptom checklist. 0–7 subclinical, 8–15 mild, 16–23 moderate, 24–31 severe, 32–40 extreme.",
+   refs:[{c:"Goodman WK, Price LH, Rasmussen SA, et al. The Yale-Brown Obsessive Compulsive Scale. I. Development, use, and reliability. Arch Gen Psychiatry. 1989;46(11):1006-1011.", pm:"The Yale-Brown Obsessive Compulsive Scale. I. Development, use, and reliability"},
+         {c:"Goodman WK, Price LH, Rasmussen SA, et al. The Yale-Brown Obsessive Compulsive Scale. II. Validity. Arch Gen Psychiatry. 1989;46(11):1012-1016.", pm:"The Yale-Brown Obsessive Compulsive Scale. II. Validity"}]},
+  {n:"Y-BOCS-II", f:"Y-BOCS, Second Edition", a:"a", t:"Severity / monitoring", r:"Clinician",
+   k:"Revision that reworks the resistance item and expands the scoring range (0–50).",
+   refs:[{c:"Storch EA, Rasmussen SA, Price LH, Larson MJ, Murphy TK, Goodman WK. Development and psychometric evaluation of the Yale-Brown Obsessive-Compulsive Scale—Second Edition. Psychol Assess. 2010;22(2):223-232.", pm:"Development and psychometric evaluation of the Yale-Brown Obsessive-Compulsive Scale Second Edition"}]},
+  {n:"OCI-R", f:"Obsessive-Compulsive Inventory – Revised", a:"a", t:"Screening", r:"Self-report",
+   k:"18 items across six subscales (washing, checking, ordering, obsessing, hoarding, neutralizing). A score of 21 was proposed as the cutoff for likely OCD.",
+   refs:[{c:"Foa EB, Huppert JD, Leiberg S, et al. The Obsessive-Compulsive Inventory: development and validation of a short version. Psychol Assess. 2002;14(4):485-496.", pm:"The Obsessive-Compulsive Inventory: development and validation of a short version"}]},
+  {n:"DOCS", f:"Dimensional Obsessive-Compulsive Scale", a:"a", t:"Severity / monitoring", r:"Self-report",
+   k:"20 items rating severity within four symptom dimensions (contamination, responsibility for harm, unacceptable thoughts, symmetry).",
+   refs:[{c:"Abramowitz JS, Deacon BJ, Olatunji BO, et al. Assessment of obsessive-compulsive symptom dimensions: development and evaluation of the Dimensional Obsessive-Compulsive Scale. Psychol Assess. 2010;22(1):180-198.", pm:"Assessment of obsessive-compulsive symptom dimensions: development and evaluation of the Dimensional Obsessive-Compulsive Scale"}]},
+  {n:"SI-R", f:"Saving Inventory – Revised", a:"a", t:"Severity / monitoring", r:"Self-report",
+   k:"23 items covering clutter, difficulty discarding, and excessive acquisition in hoarding disorder. Relevant to older adults with increasing clutter, where cognitive and mood causes must also be ruled out.",
+   refs:[{c:"Frost RO, Steketee G, Grisham J. Measurement of compulsive hoarding: Saving Inventory-Revised. Behav Res Ther. 2004;42(10):1163-1182.", pm:"Measurement of compulsive hoarding: Saving Inventory-Revised"}]}
+  ]},
+
+{ id:"ptsd", title:"Trauma- and stressor-related disorders",
+  note:"Screen for trauma exposure first, then symptoms. The CAPS-5 and CAPS-CA-5 are the reference-standard interviews.",
+  tools:[
+  {n:"CATS / CATS-2", f:"Child and Adolescent Trauma Screen", a:"c", t:"Screening", r:"Self (7–17) / caregiver (3–17)", hy:true,
+   k:"Free DSM-5-based trauma exposure and symptom screen with a caregiver version for ages 3–6. Internal consistency α .88–.94 across US, German, and Norwegian samples. CATS-2 adds ICD-11 PTSD/complex PTSD.",
+   refs:[{c:"Sachser C, Berliner L, Holt T, et al. International development and psychometric properties of the Child and Adolescent Trauma Screen (CATS). J Affect Disord. 2017;210:189-195.", pm:"International development and psychometric properties of the Child and Adolescent Trauma Screen (CATS)"}]},
+  {n:"CPSS-5", f:"Child PTSD Symptom Scale for DSM-5", a:"c", t:"Severity / monitoring", r:"Self-report & interview", hy:true,
+   k:"Self-report and interview versions for ages 8–18. ROC analysis supported a self-report cutoff of 31 for probable PTSD.",
+   refs:[{c:"Foa EB, Asnaani A, Zang Y, Capaldi S, Yeh R. Psychometrics of the Child PTSD Symptom Scale for DSM-5 for trauma-exposed children and adolescents. J Clin Child Adolesc Psychol. 2018;47(1):38-46.", pm:"Psychometrics of the Child PTSD Symptom Scale for DSM-5 for trauma-exposed children and adolescents"}]},
+  {n:"UCLA PTSD-RI-5", f:"UCLA PTSD Reaction Index for DSM-5", a:"c", t:"Screening", r:"Self / parent",
+   k:"Developmentally informed self-report that discriminated youth with and without PTSD against the CAPS-CA-5. Brief and very-brief forms exist.",
+   refs:[{c:"Kaplow JB, Rolon-Arroyo B, Layne CM, et al. Validation of the UCLA PTSD Reaction Index for DSM-5: a developmentally informed assessment tool for youth. J Am Acad Child Adolesc Psychiatry. 2020;59(1):186-194.", pm:"Validation of the UCLA PTSD Reaction Index for DSM-5: a developmentally informed assessment tool for youth"}]},
+  {n:"CAPS-CA-5", f:"Clinician-Administered PTSD Scale for DSM-5 – Child/Adolescent", a:"c", t:"Diagnostic interview", r:"Clinician",
+   k:"Reference-standard structured interview for pediatric PTSD, used as the criterion when validating other youth measures.",
+   refs:[{c:"Pynoos RS, Weathers FW, Steinberg AM, et al. Clinician-Administered PTSD Scale for DSM-5 – Child/Adolescent Version (CAPS-CA-5). National Center for PTSD; 2015."}]},
+  {n:"TSCC", f:"Trauma Symptom Checklist for Children", a:"c", t:"Severity / monitoring", r:"Self-report", pr:true,
+   k:"54 items for ages 8–16 covering anxiety, depression, anger, posttraumatic stress, dissociation, and sexual concerns.",
+   refs:[{c:"Briere J. Trauma Symptom Checklist for Children (TSCC): Professional Manual. Odessa, FL: Psychological Assessment Resources; 1996."}]},
+  {n:"PC-PTSD-5", f:"Primary Care PTSD Screen for DSM-5", a:"a", t:"Screening", r:"Self-report", hy:true,
+   k:"Trauma-exposure question followed by 5 yes/no items. A cutoff of 3 was optimally sensitive in VA primary care. Free.",
+   refs:[{c:"Prins A, Bovin MJ, Smolenski DJ, et al. The Primary Care PTSD Screen for DSM-5 (PC-PTSD-5): development and evaluation within a veteran primary care sample. J Gen Intern Med. 2016;31(10):1206-1211.", pm:"The Primary Care PTSD Screen for DSM-5 (PC-PTSD-5): development and evaluation within a veteran primary care sample"}]},
+  {n:"PCL-5", f:"PTSD Checklist for DSM-5", a:"a", t:"Severity / monitoring", r:"Self-report", hy:true,
+   k:"20 items (0–80) mapped to DSM-5 criteria. A provisional cutoff of 31–33 suggests probable PTSD. Also used to track treatment response. Free from the National Center for PTSD.",
+   refs:[{c:"Weathers FW, Litz BT, Keane TM, Palmieri PA, Marx BP, Schnurr PP. The PTSD Checklist for DSM-5 (PCL-5). National Center for PTSD; 2013."},
+         {c:"Blevins CA, Weathers FW, Davis MT, Witte TK, Domino JL. The Posttraumatic Stress Disorder Checklist for DSM-5 (PCL-5): development and initial psychometric evaluation. J Trauma Stress. 2015;28(6):489-498.", pm:"The Posttraumatic Stress Disorder Checklist for DSM-5 (PCL-5): development and initial psychometric evaluation"}]},
+  {n:"CAPS-5", f:"Clinician-Administered PTSD Scale for DSM-5", a:"a", t:"Diagnostic interview", r:"Clinician", hy:true,
+   k:"30-item structured interview and the reference standard for PTSD diagnosis and severity.",
+   refs:[{c:"Weathers FW, Bovin MJ, Lee DJ, et al. The Clinician-Administered PTSD Scale for DSM-5 (CAPS-5): development and initial psychometric evaluation in military veterans. Psychol Assess. 2018;30(3):383-395.", pm:"The Clinician-Administered PTSD Scale for DSM-5 (CAPS-5): development and initial psychometric evaluation in military veterans"}]},
+  {n:"ITQ", f:"International Trauma Questionnaire", a:"a", t:"Screening", r:"Self-report",
+   k:"Brief measure of ICD-11 PTSD and complex PTSD, including disturbances in self-organization.",
+   refs:[{c:"Cloitre M, Shevlin M, Brewin CR, et al. The International Trauma Questionnaire: development of a self-report measure of ICD-11 PTSD and complex PTSD. Acta Psychiatr Scand. 2018;138(6):536-546.", pm:"The International Trauma Questionnaire: development of a self-report measure of ICD-11 PTSD and complex PTSD"}]},
+  {n:"ACE Questionnaire", f:"Adverse Childhood Experiences", a:"a", t:"Screening", r:"Self-report",
+   k:"10 categories of childhood abuse, neglect, and household dysfunction. Showed a graded relationship with adult health risks and disease. It measures exposure, not PTSD symptoms.",
+   refs:[{c:"Felitti VJ, Anda RF, Nordenberg D, et al. Relationship of childhood abuse and household dysfunction to many of the leading causes of death in adults: the Adverse Childhood Experiences (ACE) Study. Am J Prev Med. 1998;14(4):245-258.", pm:"Relationship of childhood abuse and household dysfunction to many of the leading causes of death in adults"}]}
+  ]},
+
+{ id:"dis", title:"Dissociative disorders",
+  note:"Self-report scales flag who needs a structured interview. High DES scores alone do not establish a dissociative disorder.",
+  tools:[
+  {n:"CDC", f:"Child Dissociative Checklist", a:"c", t:"Screening", r:"Caregiver / teacher",
+   k:"20-item observer checklist for ages 5–12.",
+   refs:[{c:"Putnam FW, Helmers K, Trickett PK. Development, reliability, and validity of a child dissociation scale. Child Abuse Negl. 1993;17(6):731-741.", pm:"Development, reliability, and validity of a child dissociation scale"}]},
+  {n:"A-DES", f:"Adolescent Dissociative Experiences Scale", a:"c", t:"Screening", r:"Self-report",
+   k:"Adolescent adaptation of the DES with age-appropriate items.",
+   refs:[{c:"Armstrong JG, Putnam FW, Carlson EB, Libero DZ, Smith SR. Development and validation of a measure of adolescent dissociation: the Adolescent Dissociative Experiences Scale. J Nerv Ment Dis. 1997;185(8):491-497.", pm:"Development and validation of a measure of adolescent dissociation: the Adolescent Dissociative Experiences Scale"}]},
+  {n:"DES / DES-II", f:"Dissociative Experiences Scale", a:"a", t:"Screening", r:"Self-report", hy:true,
+   k:"28 items rated 0–100% of the time. Mean scores ≥30 are commonly used to flag possible dissociative disorders for structured interview.",
+   refs:[{c:"Bernstein EM, Putnam FW. Development, reliability, and validity of a dissociation scale. J Nerv Ment Dis. 1986;174(12):727-735.", pm:"Bernstein Putnam Development, reliability, and validity of a dissociation scale 1986"},
+         {c:"Carlson EB, Putnam FW. An update on the Dissociative Experiences Scale. Dissociation. 1993;6(1):16-27."}]},
+  {n:"SCID-D", f:"Structured Clinical Interview for Dissociative Disorders", a:"a", t:"Diagnostic interview", r:"Clinician", pr:true,
+   k:"Semi-structured interview assessing amnesia, depersonalization, derealization, identity confusion, and identity alteration.",
+   refs:[{c:"Steinberg M. Interviewer's Guide to the Structured Clinical Interview for DSM-IV Dissociative Disorders (SCID-D). Rev ed. Washington, DC: American Psychiatric Press; 1994."}]},
+  {n:"MID", f:"Multidimensional Inventory of Dissociation", a:"a", t:"Diagnostic interview", r:"Self-report",
+   k:"Long multiscale inventory of pathological dissociation, used for diagnostic clarification.",
+   refs:[{c:"Dell PF. The Multidimensional Inventory of Dissociation (MID): a comprehensive measure of pathological dissociation. J Trauma Dissociation. 2006;7(2):77-106.", pm:"The Multidimensional Inventory of Dissociation (MID): a comprehensive measure of pathological dissociation"}]},
+  {n:"CDS", f:"Cambridge Depersonalization Scale", a:"a", t:"Severity / monitoring", r:"Self-report",
+   k:"29 items measuring frequency and duration of depersonalization/derealization experiences.",
+   refs:[{c:"Sierra M, Berrios GE. The Cambridge Depersonalization Scale: a new instrument for the measurement of depersonalization. Psychiatry Res. 2000;93(2):153-164.", pm:"The Cambridge Depersonalization Scale: a new instrument for the measurement of depersonalization"}]},
+  {n:"SDQ-20", f:"Somatoform Dissociation Questionnaire", a:"a", t:"Screening", r:"Self-report",
+   k:"Measures somatoform (bodily) dissociation, such as anesthesia, analgesia, and motor inhibition.",
+   refs:[{c:"Nijenhuis ER, Spinhoven P, Van Dyck R, Van der Hart O, Vanderlinden J. The development and psychometric characteristics of the Somatoform Dissociation Questionnaire (SDQ-20). J Nerv Ment Dis. 1996;184(11):688-694.", pm:"The development and psychometric characteristics of the Somatoform Dissociation Questionnaire (SDQ-20)"}]}
+  ]},
+
+{ id:"psy", title:"Schizophrenia spectrum and other psychotic disorders",
+  note:"No routine pediatric-specific psychosis scale is in wide use. Adult tools and clinical-high-risk interviews are applied to adolescents. Catatonia is included here and requires active screening.",
+  tools:[
+  {n:"BPRS-C", f:"Brief Psychiatric Rating Scale for Children", a:"c", t:"Severity / monitoring", r:"Clinician",
+   k:"Child adaptation of the BPRS covering a broad range of psychopathology.",
+   refs:[{c:"Overall JE, Pfefferbaum B. The Brief Psychiatric Rating Scale for Children. Psychopharmacol Bull. 1982;18(2):10-16.", pm:"The Brief Psychiatric Rating Scale for Children"}]},
+  {n:"PCRS", f:"Pediatric Catatonia Rating Scale", a:"c", t:"Severity / monitoring", r:"Clinician",
+   k:"Validated in pediatric samples. Catatonia occurs in youth with psychosis, mood disorders, autism, and medical conditions.",
+   refs:[{c:"Benarous X, Consoli A, Raffin M, et al. Validation of the Pediatric Catatonia Rating Scale (PCRS). Schizophr Res. 2016;176(2-3):378-386.", pm:"Validation of the Pediatric Catatonia Rating Scale (PCRS)"}]},
+  {n:"PQ-B", f:"Prodromal Questionnaire – Brief", a:"b", t:"Screening", r:"Self-report",
+   k:"21-item screen for attenuated psychotic symptoms (clinical high risk) in adolescents and young adults. Positives proceed to the SIPS or CAARMS.",
+   refs:[{c:"Loewy RL, Pearson R, Vinogradov S, Bearden CE, Cannon TD. Psychosis risk screening with the Prodromal Questionnaire—brief version (PQ-B). Schizophr Res. 2011;129(1):42-46.", pm:"Psychosis risk screening with the Prodromal Questionnaire brief version (PQ-B)"}]},
+  {n:"SIPS / SOPS", f:"Structured Interview for Psychosis-Risk Syndromes", a:"b", t:"Diagnostic interview", r:"Clinician",
+   k:"Reference interview for clinical high-risk (prodromal) syndromes in adolescents and young adults.",
+   refs:[{c:"Miller TJ, McGlashan TH, Rosen JL, et al. Prodromal assessment with the structured interview for prodromal syndromes and the scale of prodromal symptoms: predictive validity, interrater reliability, and training to reliability. Schizophr Bull. 2003;29(4):703-715.", pm:"Prodromal assessment with the structured interview for prodromal syndromes and the scale of prodromal symptoms"}]},
+  {n:"CAARMS", f:"Comprehensive Assessment of At-Risk Mental States", a:"b", t:"Diagnostic interview", r:"Clinician",
+   k:"Alternative to the SIPS for identifying ultra-high-risk states, developed in Melbourne.",
+   refs:[{c:"Yung AR, Yuen HP, McGorry PD, et al. Mapping the onset of psychosis: the Comprehensive Assessment of At-Risk Mental States. Aust N Z J Psychiatry. 2005;39(11-12):964-971.", pm:"Mapping the onset of psychosis: the Comprehensive Assessment of At-Risk Mental States"}]},
+  {n:"PANSS", f:"Positive and Negative Syndrome Scale", a:"a", t:"Severity / monitoring", r:"Clinician", hy:true,
+   k:"30 items: 7 positive, 7 negative, and 16 general psychopathology. Standard outcome in antipsychotic trials.",
+   refs:[{c:"Kay SR, Fiszbein A, Opler LA. The Positive and Negative Syndrome Scale (PANSS) for schizophrenia. Schizophr Bull. 1987;13(2):261-276.", pm:"The Positive and Negative Syndrome Scale (PANSS) for schizophrenia"}]},
+  {n:"BPRS", f:"Brief Psychiatric Rating Scale", a:"a", t:"Severity / monitoring", r:"Clinician", hy:true,
+   k:"18-item original (24-item expanded version) rating of global psychopathology. Quicker than the PANSS.",
+   refs:[{c:"Overall JE, Gorham DR. The Brief Psychiatric Rating Scale. Psychol Rep. 1962;10:799-812.", pm:"Overall Gorham The Brief Psychiatric Rating Scale 1962"}]},
+  {n:"SANS / SAPS", f:"Scales for the Assessment of Negative / Positive Symptoms", a:"a", t:"Severity / monitoring", r:"Clinician",
+   k:"Detailed ratings of negative symptoms (affective flattening, alogia, avolition, anhedonia, attention) and positive symptoms.",
+   refs:[{c:"Andreasen NC. The Scale for the Assessment of Negative Symptoms (SANS): conceptual and theoretical foundations. Br J Psychiatry Suppl. 1989;(7):49-58.", pm:"The Scale for the Assessment of Negative Symptoms (SANS): conceptual and theoretical foundations"},
+         {c:"Andreasen NC. Scale for the Assessment of Positive Symptoms (SAPS). Iowa City, IA: University of Iowa; 1984."}]},
+  {n:"BNSS", f:"Brief Negative Symptom Scale", a:"a", t:"Severity / monitoring", r:"Clinician",
+   k:"13 items reflecting the NIMH consensus negative symptom domains.",
+   refs:[{c:"Kirkpatrick B, Strauss GP, Nguyen L, et al. The Brief Negative Symptom Scale: psychometric properties. Schizophr Bull. 2011;37(2):300-305.", pm:"The Brief Negative Symptom Scale: psychometric properties"}]},
+  {n:"CDSS", f:"Calgary Depression Scale for Schizophrenia", a:"a", t:"Severity / monitoring", r:"Clinician",
+   k:"Measures depression in schizophrenia while minimizing overlap with negative symptoms and extrapyramidal effects.",
+   refs:[{c:"Addington D, Addington J, Schissel B. A depression rating scale for schizophrenics. Schizophr Res. 1990;3(4):247-251.", pm:"A depression rating scale for schizophrenics"}]},
+  {n:"BFCRS / BFCSI", f:"Bush-Francis Catatonia Rating Scale / Screening Instrument", a:"a", t:"Screening", r:"Clinician", hy:true,
+   k:"23-item rating scale; the first 14 items form the screening instrument. The most widely used catatonia scale and paired with a standardized exam. Catatonia is often missed, and a lorazepam challenge supports the diagnosis.",
+   refs:[{c:"Bush G, Fink M, Petrides G, Dowling F, Francis A. Catatonia. I. Rating scale and standardized examination. Acta Psychiatr Scand. 1996;93(2):129-136.", pm:"Catatonia. I. Rating scale and standardized examination"}]}
+  ]},
+
+{ id:"ncd", title:"Neurocognitive disorders (delirium, MCI, dementia) & functional status",
+  note:"Rule out delirium first (acute onset, fluctuation, inattention). Pair a cognitive screen with an informant measure and an ADL/IADL assessment. Depression can mimic cognitive decline.",
+  tools:[
+  {n:"CAPD", f:"Cornell Assessment of Pediatric Delirium", a:"c", t:"Screening", r:"Nurse / clinician (observational)",
+   k:"8-item observational screen for the PICU. Works in preverbal and developmentally delayed children.",
+   refs:[{c:"Traube C, Silver G, Kearney J, et al. Cornell Assessment of Pediatric Delirium: a valid, rapid, observational tool for screening delirium in the PICU. Crit Care Med. 2014;42(3):656-663.", pm:"Cornell Assessment of Pediatric Delirium: a valid, rapid, observational tool for screening delirium in the PICU"}]},
+  {n:"pCAM-ICU", f:"Pediatric Confusion Assessment Method for the ICU", a:"c", t:"Screening", r:"Clinician",
+   k:"Developmentally adapted CAM-ICU for critically ill children ages 5 and older.",
+   refs:[{c:"Smith HA, Boyd J, Fuchs DC, et al. Diagnosing delirium in critically ill children: validity and reliability of the Pediatric Confusion Assessment Method for the Intensive Care Unit. Crit Care Med. 2011;39(1):150-157.", pm:"Diagnosing delirium in critically ill children: validity and reliability of the Pediatric Confusion Assessment Method for the Intensive Care Unit"}]},
+  {n:"CAM", f:"Confusion Assessment Method", a:"a", t:"Screening", r:"Clinician", hy:true,
+   k:"Algorithm: (1) acute onset/fluctuating course AND (2) inattention, plus either (3) disorganized thinking or (4) altered level of consciousness. High sensitivity and specificity in the original validation.",
+   refs:[{c:"Inouye SK, van Dyck CH, Alessi CA, Balkin S, Siegal AP, Horwitz RI. Clarifying confusion: the confusion assessment method. A new method for detection of delirium. Ann Intern Med. 1990;113(12):941-948.", pm:"Clarifying confusion: the confusion assessment method. A new method for detection of delirium"}]},
+  {n:"CAM-ICU", f:"CAM for the Intensive Care Unit", a:"a", t:"Screening", r:"Nurse / clinician",
+   k:"Nonverbal adaptation for ventilated and critically ill adults.",
+   refs:[{c:"Ely EW, Inouye SK, Bernard GR, et al. Delirium in mechanically ventilated patients: validity and reliability of the confusion assessment method for the intensive care unit (CAM-ICU). JAMA. 2001;286(21):2703-2710.", pm:"Delirium in mechanically ventilated patients: validity and reliability of the confusion assessment method for the intensive care unit"}]},
+  {n:"4AT", f:"4 'A's Test", a:"a", t:"Screening", r:"Clinician",
+   k:"Quick delirium screen requiring no special training (alertness, AMT4, attention, acute change). Scores ≥4 suggest possible delirium.",
+   refs:[{c:"Bellelli G, Morandi A, Davis DH, et al. Validation of the 4AT, a new instrument for rapid delirium screening: a study in 234 hospitalised older people. Age Ageing. 2014;43(4):496-502.", pm:"Validation of the 4AT, a new instrument for rapid delirium screening"}]},
+  {n:"MoCA", f:"Montreal Cognitive Assessment", a:"a", t:"Screening", r:"Clinician", hy:true, pr:true,
+   k:"30 points; ≥26 normal; add 1 point for ≤12 years of education. Original study: 90% sensitivity for MCI (100% for mild AD) and 87% specificity. More sensitive than the MMSE for MCI and executive dysfunction. Official use requires training/certification.",
+   refs:[{c:"Nasreddine ZS, Phillips NA, Bédirian V, et al. The Montreal Cognitive Assessment, MoCA: a brief screening tool for mild cognitive impairment. J Am Geriatr Soc. 2005;53(4):695-699.", pm:"The Montreal Cognitive Assessment, MoCA: a brief screening tool for mild cognitive impairment"}]},
+  {n:"MMSE", f:"Mini-Mental State Examination", a:"a", t:"Screening", r:"Clinician", hy:true, pr:true,
+   k:"30 points; <24 is a commonly used impairment threshold. Insensitive to MCI and executive deficits and influenced by education and culture. Copyrighted.",
+   refs:[{c:"Folstein MF, Folstein SE, McHugh PR. \"Mini-mental state\": a practical method for grading the cognitive state of patients for the clinician. J Psychiatr Res. 1975;12(3):189-198.", pm:"Mini-mental state: a practical method for grading the cognitive state of patients for the clinician"}]},
+  {n:"SLUMS", f:"Saint Louis University Mental Status Examination", a:"a", t:"Screening", r:"Clinician", hy:true,
+   k:"30 points with education-adjusted cutoffs (high school education: 27–30 normal, 21–26 mild neurocognitive disorder, 1–20 dementia). Free (VA).",
+   refs:[{c:"Tariq SH, Tumosa N, Chibnall JT, Perry MH 3rd, Morley JE. Comparison of the Saint Louis University mental status examination and the mini-mental state examination for detecting dementia and mild neurocognitive disorder—a pilot study. Am J Geriatr Psychiatry. 2006;14(11):900-910.", pm:"Comparison of the Saint Louis University mental status examination and the mini-mental state examination for detecting dementia and mild neurocognitive disorder"}]},
+  {n:"Mini-Cog", f:"Mini-Cog", a:"a", t:"Screening", r:"Clinician", hy:true,
+   k:"3-word recall plus clock drawing (0–5). Takes about 3 minutes and is less biased by education and language. Scores <3 are commonly treated as positive.",
+   refs:[{c:"Borson S, Scanlan J, Brush M, Vitaliano P, Dokmak A. The mini-cog: a cognitive 'vital signs' measure for dementia screening in multi-lingual elderly. Int J Geriatr Psychiatry. 2000;15(11):1021-1027.", pm:"The mini-cog: a cognitive vital signs measure for dementia screening in multi-lingual elderly"}]},
+  {n:"AD8", f:"AD8 Dementia Screening Interview", a:"a", t:"Screening", r:"Informant",
+   k:"8 yes/no questions about change from prior function. ≥2 suggests cognitive impairment. Detects change that one-time testing can miss.",
+   refs:[{c:"Galvin JE, Roe CM, Powlishta KK, et al. The AD8: a brief informant interview to detect dementia. Neurology. 2005;65(4):559-564.", pm:"The AD8: a brief informant interview to detect dementia"}]},
+  {n:"IQCODE", f:"Informant Questionnaire on Cognitive Decline in the Elderly", a:"a", t:"Screening", r:"Informant",
+   k:"Informant rates change over 10 years (26-item and 16-item forms). Less affected by education than performance tests.",
+   refs:[{c:"Jorm AF, Jacomb PA. The Informant Questionnaire on Cognitive Decline in the Elderly (IQCODE): socio-demographic correlates, reliability, validity and some norms. Psychol Med. 1989;19(4):1015-1022.", pm:"The Informant Questionnaire on Cognitive Decline in the Elderly (IQCODE): socio-demographic correlates, reliability, validity and some norms"}]},
+  {n:"CDR", f:"Clinical Dementia Rating", a:"a", t:"Function / staging", r:"Clinician (patient + informant)",
+   k:"Stages dementia (0, 0.5, 1, 2, 3) across six cognitive and functional domains.",
+   refs:[{c:"Morris JC. The Clinical Dementia Rating (CDR): current version and scoring rules. Neurology. 1993;43(11):2412-2414.", pm:"The Clinical Dementia Rating (CDR): current version and scoring rules"}]},
+  {n:"NPI", f:"Neuropsychiatric Inventory", a:"a", t:"Severity / monitoring", r:"Caregiver interview",
+   k:"Rates frequency and severity of behavioral and psychological symptoms of dementia (delusions, agitation, apathy, etc.).",
+   refs:[{c:"Cummings JL, Mega M, Gray K, Rosenberg-Thompson S, Carusi DA, Gornbein J. The Neuropsychiatric Inventory: comprehensive assessment of psychopathology in dementia. Neurology. 1994;44(12):2308-2314.", pm:"The Neuropsychiatric Inventory: comprehensive assessment of psychopathology in dementia"}]},
+  {n:"Katz ADL", f:"Katz Index of Independence in Activities of Daily Living", a:"a", t:"Function / staging", r:"Clinician / informant", hy:true,
+   k:"Basic self-care: bathing, dressing, toileting, transferring, continence, feeding.",
+   refs:[{c:"Katz S, Ford AB, Moskowitz RW, Jackson BA, Jaffe MW. Studies of illness in the aged. The index of ADL: a standardized measure of biological and psychosocial function. JAMA. 1963;185:914-919.", pm:"Studies of illness in the aged. The index of ADL: a standardized measure of biological and psychosocial function"}]},
+  {n:"Lawton IADL", f:"Lawton Instrumental Activities of Daily Living Scale", a:"a", t:"Function / staging", r:"Clinician / informant", hy:true,
+   k:"Complex tasks: telephone, shopping, food preparation, housekeeping, laundry, transportation, medications, finances. Late bills and missed medications are IADL red flags.",
+   refs:[{c:"Lawton MP, Brody EM. Assessment of older people: self-maintaining and instrumental activities of daily living. Gerontologist. 1969;9(3):179-186.", pm:"Assessment of older people: self-maintaining and instrumental activities of daily living"}]}
+  ]},
+
+{ id:"ndd", title:"Neurodevelopmental disorders (ADHD, autism, tics)",
+  note:"ADHD assessment needs ratings from more than one setting (parent and teacher). Autism screening tools are not diagnostic; ADOS-2 and ADI-R support specialist diagnosis.",
+  tools:[
+  {n:"Vanderbilt", f:"NICHQ Vanderbilt Assessment Scales", a:"c", t:"Screening", r:"Parent / teacher", hy:true,
+   k:"Ages 6–12. Positive for an ADHD presentation when ≥6 of 9 inattentive or hyperactive items are rated 2–3 plus impairment. Also screens for ODD, conduct, and anxiety/depression. Free; referenced in AAP guidance.",
+   refs:[{c:"Wolraich ML, Lambert W, Doffing MA, Bickman L, Simmons T, Worley K. Psychometric properties of the Vanderbilt ADHD diagnostic parent rating scale in a referred population. J Pediatr Psychol. 2003;28(8):559-567.", pm:"Psychometric properties of the Vanderbilt ADHD diagnostic parent rating scale in a referred population"},
+         {c:"Wolraich ML, Feurer ID, Hannah JN, Baumgaertel A, Pinnock TY. Obtaining systematic teacher reports of disruptive behavior disorders utilizing DSM-IV. J Abnorm Child Psychol. 1998;26(2):141-152.", pm:"Obtaining systematic teacher reports of disruptive behavior disorders utilizing DSM-IV"}]},
+  {n:"ADHD-RS-5", f:"ADHD Rating Scale-5", a:"c", t:"Severity / monitoring", r:"Parent / teacher", pr:true,
+   k:"18 DSM-5 symptom items plus impairment ratings, with normative data. Common outcome in pediatric ADHD trials.",
+   refs:[{c:"DuPaul GJ, Power TJ, Anastopoulos AD, Reid R. ADHD Rating Scale-5 for Children and Adolescents: Checklist, Norms, and Clinical Interpretation. New York, NY: Guilford Press; 2016."}]},
+  {n:"Conners 3", f:"Conners Rating Scales, 3rd ed. (Conners 4 now available)", a:"c", t:"Severity / monitoring", r:"Parent / teacher / self", pr:true,
+   k:"Normed multi-informant ratings of ADHD and common comorbid problems.",
+   refs:[{c:"Conners CK. Conners 3rd Edition Manual. Toronto, ON: Multi-Health Systems; 2008."}]},
+  {n:"SNAP-IV", f:"Swanson, Nolan, and Pelham Rating Scale", a:"c", t:"Severity / monitoring", r:"Parent / teacher",
+   k:"Free DSM-based rating of ADHD and ODD symptoms. Used in the MTA study.",
+   refs:[{c:"Swanson JM, Kraemer HC, Hinshaw SP, et al. Clinical relevance of the primary findings of the MTA: success rates based on severity of ADHD and ODD symptoms at the end of treatment. J Am Acad Child Adolesc Psychiatry. 2001;40(2):168-179.", pm:"Clinical relevance of the primary findings of the MTA: success rates based on severity of ADHD and ODD symptoms at the end of treatment"}]},
+  {n:"M-CHAT-R/F", f:"Modified Checklist for Autism in Toddlers, Revised with Follow-Up", a:"c", t:"Screening", r:"Parent", hy:true,
+   k:"Ages 16–30 months, 20 items. 0–2 low risk; 3–7 medium (administer the Follow-Up interview); 8–20 high (refer). AAP recommends autism-specific screening at 18 and 24 months. Free.",
+   refs:[{c:"Robins DL, Casagrande K, Barton M, Chen CM, Dumont-Mathieu T, Fein D. Validation of the modified checklist for autism in toddlers, revised with follow-up (M-CHAT-R/F). Pediatrics. 2014;133(1):37-45.", pm:"Validation of the modified checklist for autism in toddlers, revised with follow-up (M-CHAT-R/F)"}]},
+  {n:"SCQ", f:"Social Communication Questionnaire", a:"c", t:"Screening", r:"Parent", pr:true,
+   k:"40 yes/no items based on the ADI-R, for ages 4 and older. A total ≥15 is the usual referral threshold.",
+   refs:[{c:"Berument SK, Rutter M, Lord C, Pickles A, Bailey A. Autism screening questionnaire: diagnostic validity. Br J Psychiatry. 1999;175:444-451.", pm:"Autism screening questionnaire: diagnostic validity"},
+         {c:"Rutter M, Bailey A, Lord C. The Social Communication Questionnaire: Manual. Los Angeles, CA: Western Psychological Services; 2003."}]},
+  {n:"ADI-R", f:"Autism Diagnostic Interview – Revised", a:"c", t:"Diagnostic interview", r:"Caregiver interview", pr:true,
+   k:"Lengthy standardized caregiver interview on developmental history. Pairs with the ADOS-2 in specialist diagnosis.",
+   refs:[{c:"Lord C, Rutter M, Le Couteur A. Autism Diagnostic Interview-Revised: a revised version of a diagnostic interview for caregivers of individuals with possible pervasive developmental disorders. J Autism Dev Disord. 1994;24(5):659-685.", pm:"Autism Diagnostic Interview-Revised: a revised version of a diagnostic interview for caregivers of individuals with possible pervasive developmental disorders"}]},
+  {n:"CARS-2", f:"Childhood Autism Rating Scale, 2nd ed.", a:"c", t:"Severity / monitoring", r:"Clinician", pr:true,
+   k:"Clinician rating from observation and parent report, with standard and high-functioning forms.",
+   refs:[{c:"Schopler E, Van Bourgondien ME, Wellman GJ, Love SR. Childhood Autism Rating Scale, Second Edition (CARS-2): Manual. Los Angeles, CA: Western Psychological Services; 2010."}]},
+  {n:"ABC", f:"Aberrant Behavior Checklist", a:"c", t:"Severity / monitoring", r:"Caregiver",
+   k:"58 items with five subscales. The Irritability subscale was the primary outcome in the risperidone and aripiprazole autism trials.",
+   refs:[{c:"Aman MG, Singh NN, Stewart AW, Field CJ. The Aberrant Behavior Checklist: a behavior rating scale for the assessment of treatment effects. Am J Ment Defic. 1985;89(5):485-491.", pm:"The Aberrant Behavior Checklist: a behavior rating scale for the assessment of treatment effects"}]},
+  {n:"YGTSS", f:"Yale Global Tic Severity Scale", a:"c", t:"Severity / monitoring", r:"Clinician", hy:true,
+   k:"Rates motor and phonic tics on number, frequency, intensity, complexity, and interference (0–50), plus an impairment score (0–50). Standard outcome in tic disorder trials.",
+   refs:[{c:"Leckman JF, Riddle MA, Hardin MT, et al. The Yale Global Tic Severity Scale: initial testing of a clinician-rated scale of tic severity. J Am Acad Child Adolesc Psychiatry. 1989;28(4):566-573.", pm:"The Yale Global Tic Severity Scale: initial testing of a clinician-rated scale of tic severity"}]},
+  {n:"PUTS", f:"Premonitory Urge for Tics Scale", a:"c", t:"Severity / monitoring", r:"Self-report",
+   k:"Measures the premonitory urge that precedes tics. Psychometrics were stronger in youth 10 and older. Relevant to behavioral therapy (CBIT).",
+   refs:[{c:"Woods DW, Piacentini J, Himle MB, Chang S. Premonitory Urge for Tics Scale (PUTS): initial psychometric results and examination of the premonitory urge phenomenon in youths with tic disorders. J Dev Behav Pediatr. 2005;26(6):397-403.", pm:"Premonitory Urge for Tics Scale (PUTS): initial psychometric results"}]},
+  {n:"ECBI", f:"Eyberg Child Behavior Inventory", a:"c", t:"Severity / monitoring", r:"Parent", pr:true,
+   k:"Disruptive behavior intensity and problem scores for ages 2–16. Common in parent-training outcome research.",
+   refs:[{c:"Eyberg SM, Pincus D. Eyberg Child Behavior Inventory and Sutter-Eyberg Student Behavior Inventory-Revised: Professional Manual. Odessa, FL: Psychological Assessment Resources; 1999."}]},
+  {n:"ADOS-2", f:"Autism Diagnostic Observation Schedule, 2nd ed.", a:"b", t:"Diagnostic interview", r:"Clinician (observational)", pr:true, hy:true,
+   k:"Standardized observational assessment with modules from toddlers to verbally fluent adults. Reference standard in specialist autism evaluation. Requires training.",
+   refs:[{c:"Lord C, Rutter M, DiLavore PC, Risi S, Gotham K, Bishop SL. Autism Diagnostic Observation Schedule, Second Edition (ADOS-2) Manual. Torrance, CA: Western Psychological Services; 2012."}]},
+  {n:"SRS-2", f:"Social Responsiveness Scale, 2nd ed.", a:"b", t:"Severity / monitoring", r:"Parent / teacher / self", pr:true,
+   k:"Quantitative measure of autism-related social impairment from preschool through adulthood.",
+   refs:[{c:"Constantino JN, Gruber CP. Social Responsiveness Scale, Second Edition (SRS-2): Manual. Torrance, CA: Western Psychological Services; 2012."}]},
+  {n:"ASRS v1.1 / ASRS-5", f:"Adult ADHD Self-Report Scale", a:"a", t:"Screening", r:"Self-report", hy:true,
+   k:"6-item WHO screener: ≥4 responses in the shaded boxes is positive. The DSM-5 version (ASRS-5) was validated in 2017. Confirm childhood onset (before age 12) and impairment in more than one setting.",
+   refs:[{c:"Kessler RC, Adler L, Ames M, et al. The World Health Organization Adult ADHD Self-Report Scale (ASRS): a short screening scale for use in the general population. Psychol Med. 2005;35(2):245-256.", pm:"The World Health Organization Adult ADHD Self-Report Scale (ASRS): a short screening scale for use in the general population"},
+         {c:"Ustun B, Adler LA, Rudin C, et al. The World Health Organization Adult Attention-Deficit/Hyperactivity Disorder Self-Report Screening Scale for DSM-5. JAMA Psychiatry. 2017;74(5):520-527.", pm:"The World Health Organization Adult Attention-Deficit/Hyperactivity Disorder Self-Report Screening Scale for DSM-5"}]},
+  {n:"CAARS", f:"Conners' Adult ADHD Rating Scales", a:"a", t:"Severity / monitoring", r:"Self / observer", pr:true,
+   k:"Normed adult ADHD symptom ratings with self and observer forms.",
+   refs:[{c:"Conners CK, Erhardt D, Sparrow E. Conners' Adult ADHD Rating Scales (CAARS): Technical Manual. North Tonawanda, NY: Multi-Health Systems; 1999."}]},
+  {n:"AQ / AQ-10", f:"Autism-Spectrum Quotient", a:"a", t:"Screening", r:"Self-report",
+   k:"50-item AQ and 10-item short form. AQ-10 ≥6 suggests referral for specialist assessment.",
+   refs:[{c:"Baron-Cohen S, Wheelwright S, Skinner R, Martin J, Clubley E. The autism-spectrum quotient (AQ): evidence from Asperger syndrome/high-functioning autism, males and females, scientists and mathematicians. J Autism Dev Disord. 2001;31(1):5-17.", pm:"The autism-spectrum quotient (AQ): evidence from Asperger syndrome/high-functioning autism"},
+         {c:"Allison C, Auyeung B, Baron-Cohen S. Toward brief \"red flags\" for autism screening: the Short Autism Spectrum Quotient and the Short Quantitative Checklist in 1,000 cases and 3,000 controls. J Am Acad Child Adolesc Psychiatry. 2012;51(2):202-212.e7.", pm:"Toward brief red flags for autism screening: the Short Autism Spectrum Quotient and the Short Quantitative Checklist"}]},
+  {n:"RAADS-R", f:"Ritvo Autism Asperger Diagnostic Scale – Revised", a:"a", t:"Screening", r:"Self-report (clinician-administered)",
+   k:"80 items to assist adult autism assessment.",
+   refs:[{c:"Ritvo RA, Ritvo ER, Guthrie D, et al. The Ritvo Autism Asperger Diagnostic Scale-Revised (RAADS-R): a scale to assist the diagnosis of autism spectrum disorder in adults: an international validation study. J Autism Dev Disord. 2011;41(8):1076-1089.", pm:"The Ritvo Autism Asperger Diagnostic Scale-Revised (RAADS-R)"}]}
+  ]},
+
+{ id:"som", title:"Somatic symptom and related disorders",
+  note:"Somatic symptom burden scales support, but do not establish, a DSM-5 somatic symptom disorder diagnosis, which also requires excessive thoughts, feelings, or behaviors.",
+  tools:[
+  {n:"CSI-24", f:"Children's Somatization Inventory", a:"c", t:"Severity / monitoring", r:"Self / parent",
+   k:"24-item revised form measuring somatic symptom burden in youth.",
+   refs:[{c:"Walker LS, Beck JE, Garber J, Lambert W. Children's Somatization Inventory: psychometric properties of the revised form (CSI-24). J Pediatr Psychol. 2009;34(4):430-440.", pm:"Children's Somatization Inventory: psychometric properties of the revised form (CSI-24)"}]},
+  {n:"PHQ-15", f:"Patient Health Questionnaire-15", a:"a", t:"Severity / monitoring", r:"Self-report",
+   k:"15 common somatic symptoms; 5/10/15 = low/medium/high somatic symptom severity.",
+   refs:[{c:"Kroenke K, Spitzer RL, Williams JB. The PHQ-15: validity of a new measure for evaluating the severity of somatic symptoms. Psychosom Med. 2002;64(2):258-266.", pm:"The PHQ-15: validity of a new measure for evaluating the severity of somatic symptoms"}]},
+  {n:"SSS-8", f:"Somatic Symptom Scale-8", a:"a", t:"Severity / monitoring", r:"Self-report",
+   k:"Brief 8-item measure of somatic symptom burden.",
+   refs:[{c:"Gierk B, Kohlmann S, Kroenke K, et al. The Somatic Symptom Scale-8 (SSS-8): a brief measure of somatic symptom burden. JAMA Intern Med. 2014;174(3):399-407.", pm:"The Somatic Symptom Scale-8 (SSS-8): a brief measure of somatic symptom burden"}]}
+  ]},
+
+{ id:"sex", title:"Sexual dysfunctions",
+  note:"Validated instruments are adult-only. For adolescents, sexual health is assessed through the HEEADSSS psychosocial interview (see Cross-cutting). Ask about sexual function at baseline and during treatment, since serotonergic and antipsychotic medications often cause dysfunction and nonadherence.",
+  tools:[
+  {n:"ASEX", f:"Arizona Sexual Experience Scale", a:"a", t:"Screening", r:"Self-report", hy:true,
+   k:"5 items (drive, arousal, lubrication/erection, orgasm, satisfaction) for men and women. Developed to detect psychotropic-related sexual dysfunction.",
+   refs:[{c:"McGahuey CA, Gelenberg AJ, Laukes CA, et al. The Arizona Sexual Experience Scale (ASEX): reliability and validity. J Sex Marital Ther. 2000;26(1):25-40.", pm:"The Arizona Sexual Experience Scale (ASEX): reliability and validity"}]},
+  {n:"CSFQ", f:"Changes in Sexual Functioning Questionnaire", a:"a", t:"Severity / monitoring", r:"Self / clinician",
+   k:"Gender-specific measure used in antidepressant trials to track sexual side effects.",
+   refs:[{c:"Clayton AH, McGarvey EL, Clavet GJ. The Changes in Sexual Functioning Questionnaire (CSFQ): development, reliability, and validity. Psychopharmacol Bull. 1997;33(4):731-745.", pm:"The Changes in Sexual Functioning Questionnaire (CSFQ): development, reliability, and validity"}]},
+  {n:"IIEF / IIEF-5 (SHIM)", f:"International Index of Erectile Function", a:"a", t:"Screening", r:"Self-report",
+   k:"15-item IIEF across five domains; the 5-item IIEF-5 is the common screen (≤21 suggests erectile dysfunction).",
+   refs:[{c:"Rosen RC, Riley A, Wagner G, Osterloh IH, Kirkpatrick J, Mishra A. The international index of erectile function (IIEF): a multidimensional scale for assessment of erectile dysfunction. Urology. 1997;49(6):822-830.", pm:"The international index of erectile function (IIEF): a multidimensional scale for assessment of erectile dysfunction"},
+         {c:"Rosen RC, Cappelleri JC, Smith MD, Lipsky J, Peña BM. Development and evaluation of an abridged, 5-item version of the International Index of Erectile Function (IIEF-5) as a diagnostic tool for erectile dysfunction. Int J Impot Res. 1999;11(6):319-326.", pm:"Development and evaluation of an abridged, 5-item version of the International Index of Erectile Function (IIEF-5)"}]},
+  {n:"PEDT", f:"Premature Ejaculation Diagnostic Tool", a:"a", t:"Screening", r:"Self-report",
+   k:"5 items addressing control, frequency, minimal stimulation, distress, and interpersonal difficulty.",
+   refs:[{c:"Symonds T, Perelman MA, Althof S, et al. Development and validation of a premature ejaculation diagnostic tool. Eur Urol. 2007;52(2):565-573.", pm:"Development and validation of a premature ejaculation diagnostic tool"}]},
+  {n:"FSFI", f:"Female Sexual Function Index", a:"a", t:"Severity / monitoring", r:"Self-report",
+   k:"19 items across desire, arousal, lubrication, orgasm, satisfaction, and pain.",
+   refs:[{c:"Rosen R, Brown C, Heiman J, et al. The Female Sexual Function Index (FSFI): a multidimensional self-report instrument for the assessment of female sexual function. J Sex Marital Ther. 2000;26(2):191-208.", pm:"The Female Sexual Function Index (FSFI): a multidimensional self-report instrument"}]},
+  {n:"FSDS-R", f:"Female Sexual Distress Scale – Revised", a:"a", t:"Severity / monitoring", r:"Self-report",
+   k:"Measures sexually related distress, which DSM-5 requires for diagnosis.",
+   refs:[{c:"DeRogatis L, Clayton A, Lewis-D'Agostino D, Wunderlich G, Fu Y. Validation of the female sexual distress scale-revised for assessing distress in women with hypoactive sexual desire disorder. J Sex Med. 2008;5(2):357-364.", pm:"Validation of the female sexual distress scale-revised for assessing distress in women with hypoactive sexual desire disorder"}]},
+  {n:"DSDS", f:"Decreased Sexual Desire Screener", a:"a", t:"Screening", r:"Self-report",
+   k:"5-item screener designed for non-specialists to identify acquired, generalized hypoactive sexual desire disorder in women.",
+   refs:[{c:"Clayton AH, Goldfischer ER, Goldstein I, Derogatis L, Lewis-D'Agostino DJ, Pyke R. Validation of the decreased sexual desire screener (DSDS): a brief diagnostic instrument for generalized acquired female hypoactive sexual desire disorder (HSDD). J Sex Med. 2009;6(3):730-738.", pm:"Validation of the decreased sexual desire screener (DSDS)"}]}
+  ]},
+
+{ id:"sleep", title:"Sleep-wake disorders",
+  note:"Screen for obstructive sleep apnea when insomnia, fatigue, depression, or treatment-resistant symptoms occur with obesity or hypertension. Questionnaires guide referral for polysomnography; they do not replace it.",
+  tools:[
+  {n:"BEARS", f:"Bedtime problems, Excessive sleepiness, Awakenings, Regularity/duration, Snoring", a:"c", t:"Screening", r:"Clinician interview (parent + child)", hy:true,
+   k:"Five-domain pediatric sleep screen built into routine visits. Use it to decide whether a fuller sleep history is needed.",
+   refs:[{c:"Owens JA, Dalzell V. Use of the 'BEARS' sleep screening tool in a pediatric residents' continuity clinic: a pilot study. Sleep Med. 2005;6(1):63-69.", pm:"Use of the BEARS sleep screening tool in a pediatric residents' continuity clinic: a pilot study"}]},
+  {n:"CSHQ", f:"Children's Sleep Habits Questionnaire", a:"c", t:"Screening", r:"Parent",
+   k:"33 scored items for ages 4–10 covering bedtime resistance, sleep onset, duration, anxiety, night wakings, parasomnias, sleep-disordered breathing, and daytime sleepiness.",
+   refs:[{c:"Owens JA, Spirito A, McGuinn M. The Children's Sleep Habits Questionnaire (CSHQ): psychometric properties of a survey instrument for school-aged children. Sleep. 2000;23(8):1043-1051.", pm:"The Children's Sleep Habits Questionnaire (CSHQ): psychometric properties of a survey instrument for school-aged children"}]},
+  {n:"PSQ", f:"Pediatric Sleep Questionnaire", a:"c", t:"Screening", r:"Parent",
+   k:"The 22-item sleep-related breathing disorder scale screens children for obstructive sleep apnea.",
+   refs:[{c:"Chervin RD, Hedger K, Dillon JE, Pituch KJ. Pediatric sleep questionnaire (PSQ): validity and reliability of scales for sleep-disordered breathing, snoring, sleepiness, and behavioral problems. Sleep Med. 2000;1(1):21-32.", pm:"Pediatric sleep questionnaire (PSQ): validity and reliability of scales for sleep-disordered breathing"}]},
+  {n:"PDSS", f:"Pediatric Daytime Sleepiness Scale", a:"c", t:"Severity / monitoring", r:"Self-report",
+   k:"8-item daytime sleepiness measure developed in middle-school students.",
+   refs:[{c:"Drake C, Nickel C, Burduvali E, Roth T, Jefferson C, Pietro B. The pediatric daytime sleepiness scale (PDSS): sleep habits and school outcomes in middle-school children. Sleep. 2003;26(4):455-458.", pm:"The pediatric daytime sleepiness scale (PDSS): sleep habits and school outcomes in middle-school children"}]},
+  {n:"ESS-CHAD", f:"Epworth Sleepiness Scale for Children and Adolescents", a:"c", t:"Severity / monitoring", r:"Self / parent",
+   k:"Adapted ESS without alcohol and driving items. Internally valid in ages 12–18; external validity and cutoffs are still being established.",
+   refs:[{c:"Janssen KC, Phillipson S, O'Connor J, Johns MW. Validation of the Epworth Sleepiness Scale for Children and Adolescents using Rasch analysis. Sleep Med. 2017;33:30-35.", pm:"Validation of the Epworth Sleepiness Scale for Children and Adolescents using Rasch analysis"}]},
+  {n:"ISI", f:"Insomnia Severity Index", a:"a", t:"Severity / monitoring", r:"Self-report", hy:true,
+   k:"7 items (0–28): 0–7 no clinically significant insomnia, 8–14 subthreshold, 15–21 moderate, 22–28 severe. Responsive to CBT-I.",
+   refs:[{c:"Bastien CH, Vallières A, Morin CM. Validation of the Insomnia Severity Index as an outcome measure for insomnia research. Sleep Med. 2001;2(4):297-307.", pm:"Validation of the Insomnia Severity Index as an outcome measure for insomnia research"}]},
+  {n:"PSQI", f:"Pittsburgh Sleep Quality Index", a:"a", t:"Screening", r:"Self-report",
+   k:"Seven components of sleep quality over the past month. A global score >5 distinguished good from poor sleepers in the original study.",
+   refs:[{c:"Buysse DJ, Reynolds CF 3rd, Monk TH, Berman SR, Kupfer DJ. The Pittsburgh Sleep Quality Index: a new instrument for psychiatric practice and research. Psychiatry Res. 1989;28(2):193-213.", pm:"The Pittsburgh Sleep Quality Index: a new instrument for psychiatric practice and research"}]},
+  {n:"ESS", f:"Epworth Sleepiness Scale", a:"a", t:"Screening", r:"Self-report", hy:true,
+   k:"8 situations rated 0–3 (0–24); >10 indicates excessive daytime sleepiness (OSA, narcolepsy, sedating medications).",
+   refs:[{c:"Johns MW. A new method for measuring daytime sleepiness: the Epworth sleepiness scale. Sleep. 1991;14(6):540-545.", pm:"A new method for measuring daytime sleepiness: the Epworth sleepiness scale"}]},
+  {n:"STOP-Bang", f:"Snoring, Tired, Observed apnea, Pressure, BMI, Age, Neck, Gender", a:"a", t:"Screening", r:"Self + clinician", hy:true,
+   k:"8 yes/no items. ≥3 indicates increased OSA risk; 5–8 indicates high risk. Relevant for overweight, hypertensive patients.",
+   refs:[{c:"Chung F, Yegneswaran B, Liao P, et al. STOP questionnaire: a tool to screen patients for obstructive sleep apnea. Anesthesiology. 2008;108(5):812-821.", pm:"STOP questionnaire: a tool to screen patients for obstructive sleep apnea"},
+         {c:"Chung F, Abdullah HR, Liao P. STOP-Bang Questionnaire: a practical approach to screen for obstructive sleep apnea. Chest. 2016;149(3):631-638.", pm:"STOP-Bang Questionnaire: a practical approach to screen for obstructive sleep apnea"}]},
+  {n:"Berlin Questionnaire", f:"Berlin Questionnaire", a:"a", t:"Screening", r:"Self-report",
+   k:"OSA risk based on snoring, daytime sleepiness, and hypertension/BMI categories.",
+   refs:[{c:"Netzer NC, Stoohs RA, Netzer CM, Clark K, Strohl KP. Using the Berlin Questionnaire to identify patients at risk for the sleep apnea syndrome. Ann Intern Med. 1999;131(7):485-491.", pm:"Using the Berlin Questionnaire to identify patients at risk for the sleep apnea syndrome"}]},
+  {n:"IRLS", f:"International Restless Legs Syndrome Study Group Rating Scale", a:"a", t:"Severity / monitoring", r:"Clinician / self",
+   k:"10 items (0–40) rating RLS severity. Note that SSRIs, mirtazapine, and antipsychotics can worsen RLS; check ferritin.",
+   refs:[{c:"Walters AS, LeBrocq C, Dhar A, et al. Validation of the International Restless Legs Syndrome Study Group rating scale for restless legs syndrome. Sleep Med. 2003;4(2):121-132.", pm:"Validation of the International Restless Legs Syndrome Study Group rating scale for restless legs syndrome"}]},
+  {n:"RBDSQ", f:"REM Sleep Behavior Disorder Screening Questionnaire", a:"a", t:"Screening", r:"Self-report",
+   k:"Screens for dream enactment; a cutoff of 5 points was proposed. REM sleep behavior disorder can precede synucleinopathies (Parkinson disease, Lewy body dementia).",
+   refs:[{c:"Stiasny-Kolster K, Mayer G, Schäfer S, Möller JC, Heinzel-Gutenbrunner M, Oertel WH. The REM sleep behavior disorder screening questionnaire—a new diagnostic instrument. Mov Disord. 2007;22(16):2386-2393.", pm:"The REM sleep behavior disorder screening questionnaire a new diagnostic instrument"}]},
+  {n:"MEQ", f:"Morningness–Eveningness Questionnaire", a:"a", t:"Screening", r:"Self-report",
+   k:"19 items classifying chronotype. Useful when circadian rhythm sleep-wake disorders are suspected.",
+   refs:[{c:"Horne JA, Östberg O. A self-assessment questionnaire to determine morningness-eveningness in human circadian rhythms. Int J Chronobiol. 1976;4(2):97-110.", pm:"A self-assessment questionnaire to determine morningness-eveningness in human circadian rhythms"}]}
+  ]},
+
+{ id:"eat", title:"Feeding and eating disorders",
+  note:"Eating disorders often go undetected in normal-weight and higher-weight patients. Screen regardless of BMI, and check vital signs, orthostatics, and electrolytes when a screen is positive.",
+  tools:[
+  {n:"ChEDE", f:"Eating Disorder Examination – Child version", a:"c", t:"Diagnostic interview", r:"Clinician",
+   k:"Adaptation of the EDE interview for children, with age-appropriate wording.",
+   refs:[{c:"Bryant-Waugh RJ, Cooper PJ, Taylor CL, Lask BD. The use of the eating disorder examination with children: a pilot study. Int J Eat Disord. 1996;19(4):391-397.", pm:"The use of the eating disorder examination with children: a pilot study"}]},
+  {n:"ChEAT", f:"Children's Eating Attitudes Test", a:"c", t:"Screening", r:"Self-report",
+   k:"Child version of the EAT-26 with simplified language.",
+   refs:[{c:"Maloney MJ, McGuire JB, Daniels SR. Reliability testing of a children's version of the Eating Attitude Test. J Am Acad Child Adolesc Psychiatry. 1988;27(5):541-543.", pm:"Reliability testing of a children's version of the Eating Attitude Test"}]},
+  {n:"PARDI", f:"Pica, ARFID, and Rumination Disorder Interview", a:"b", t:"Diagnostic interview", r:"Clinician (multi-informant)",
+   k:"Semi-structured interview for pica, ARFID, and rumination disorder across the lifespan. Pilot validation was in ages 10–22.",
+   refs:[{c:"Bryant-Waugh R, Micali N, Cooke L, Lawson EA, Eddy KT, Thomas JJ. Development of the Pica, ARFID, and Rumination Disorder Interview, a multi-informant, semi-structured interview of feeding disorders across the lifespan: a pilot study for ages 10-22. Int J Eat Disord. 2019;52(4):378-387.", pm:"Development of the Pica, ARFID, and Rumination Disorder Interview"}]},
+  {n:"SCOFF", f:"Sick, Control, One stone, Fat, Food", a:"a", t:"Screening", r:"Self / clinician", hy:true,
+   k:"5 yes/no questions; ≥2 is positive. Quick to remember but developed for anorexia and bulimia, so it misses binge-eating disorder and ARFID.",
+   refs:[{c:"Morgan JF, Reid F, Lacey JH. The SCOFF questionnaire: assessment of a new screening tool for eating disorders. BMJ. 1999;319(7223):1467-1468.", pm:"The SCOFF questionnaire: assessment of a new screening tool for eating disorders"}]},
+  {n:"ESP", f:"Eating Disorder Screen for Primary Care", a:"a", t:"Screening", r:"Clinician",
+   k:"5-item screen developed for primary care.",
+   refs:[{c:"Cotton MA, Ball C, Robinson P. Four simple questions can help screen for eating disorders. J Gen Intern Med. 2003;18(1):53-56.", pm:"Four simple questions can help screen for eating disorders"}]},
+  {n:"EDE-Q", f:"Eating Disorder Examination Questionnaire", a:"a", t:"Severity / monitoring", r:"Self-report", hy:true,
+   k:"28 items with restraint, eating concern, shape concern, and weight concern subscales and a global score. Self-report version of the EDE interview; adolescent norms exist.",
+   refs:[{c:"Fairburn CG, Beglin SJ. Assessment of eating disorders: interview or self-report questionnaire? Int J Eat Disord. 1994;16(4):363-370.", pm:"Assessment of eating disorders: interview or self-report questionnaire"}]},
+  {n:"EDE", f:"Eating Disorder Examination", a:"a", t:"Diagnostic interview", r:"Clinician",
+   k:"Semi-structured interview and the reference standard for eating disorder psychopathology.",
+   refs:[{c:"Cooper Z, Fairburn C. The eating disorder examination: a semi-structured interview for the assessment of the specific psychopathology of eating disorders. Int J Eat Disord. 1987;6(1):1-8."}]},
+  {n:"EAT-26", f:"Eating Attitudes Test-26", a:"a", t:"Screening", r:"Self-report",
+   k:"26 items; scores ≥20 indicate referral. Widely used in community screening.",
+   refs:[{c:"Garner DM, Olmsted MP, Bohr Y, Garfinkel PE. The eating attitudes test: psychometric features and clinical correlates. Psychol Med. 1982;12(4):871-878.", pm:"The eating attitudes test: psychometric features and clinical correlates"}]},
+  {n:"BEDS-7", f:"Binge-Eating Disorder Screener-7", a:"a", t:"Screening", r:"Self-report",
+   k:"7-item screener for probable binge-eating disorder in primary care, covering the past 3 months.",
+   refs:[{c:"Herman BK, Deal LS, DiBenedetti DB, Nelson L, Fehnel SE, Brown TM. Development of the 7-Item Binge-Eating Disorder Screener (BEDS-7). Prim Care Companion CNS Disord. 2016;18(2).", pm:"Development of the 7-Item Binge-Eating Disorder Screener (BEDS-7)"}]},
+  {n:"BES", f:"Binge Eating Scale", a:"a", t:"Severity / monitoring", r:"Self-report",
+   k:"16 items on behavioral and cognitive features of binge eating, originally studied in people with obesity.",
+   refs:[{c:"Gormally J, Black S, Daston S, Rardin D. The assessment of binge eating severity among obese persons. Addict Behav. 1982;7(1):47-55.", pm:"The assessment of binge eating severity among obese persons"}]},
+  {n:"NIAS", f:"Nine Item ARFID Screen", a:"a", t:"Screening", r:"Self-report (parent version exists)",
+   k:"Three subscales for the main ARFID presentations: picky eating, low appetite, and fear of aversive consequences. People with other eating disorders can also score high, so pair it with a broader eating disorder screen.",
+   refs:[{c:"Zickgraf HF, Ellis JM. Initial validation of the Nine Item Avoidant/Restrictive Food Intake disorder screen (NIAS): a measure of three restrictive eating patterns. Appetite. 2018;123:32-42.", pm:"Initial validation of the Nine Item Avoidant/Restrictive Food Intake disorder screen (NIAS)"}]}
+  ]},
+
+{ id:"pd", title:"Personality disorders",
+  note:"DSM-5-TR permits a personality disorder diagnosis before 18 when traits are pervasive, persistent (at least 1 year), and not limited to a developmental stage. Antisocial personality disorder requires age ≥18. Screen, then confirm with a structured interview.",
+  tools:[
+  {n:"BPFS-C", f:"Borderline Personality Features Scale for Children", a:"c", t:"Screening", r:"Self-report",
+   k:"Dimensional measure of borderline features in preadolescents, used in developmental research.",
+   refs:[{c:"Crick NR, Murray-Close D, Woods K. Borderline personality features in childhood: a short-term longitudinal study. Dev Psychopathol. 2005;17(4):1051-1070.", pm:"Borderline personality features in childhood: a short-term longitudinal study"}]},
+  {n:"ICU", f:"Inventory of Callous-Unemotional Traits", a:"c", t:"Severity / monitoring", r:"Self / parent / teacher",
+   k:"24 items measuring callous-unemotional traits, relevant to the conduct disorder specifier 'with limited prosocial emotions.'",
+   refs:[{c:"Kimonis ER, Frick PJ, Skeem JL, et al. Assessing callous-unemotional traits in adolescent offenders: validation of the Inventory of Callous-Unemotional Traits. Int J Law Psychiatry. 2008;31(3):241-252.", pm:"Assessing callous-unemotional traits in adolescent offenders: validation of the Inventory of Callous-Unemotional Traits"}]},
+  {n:"MSI-BPD", f:"McLean Screening Instrument for Borderline Personality Disorder", a:"b", t:"Screening", r:"Self-report", hy:true,
+   k:"10 yes/no items; ≥7 gave 0.81 sensitivity and 0.85 specificity in adults. Studied in outpatient youth aged 15–25, where screening was feasible but no replacement for clinical diagnosis.",
+   refs:[{c:"Zanarini MC, Vujanovic AA, Parachini EA, Boulanger JL, Frankenburg FR, Hennen J. A screening measure for BPD: the McLean Screening Instrument for Borderline Personality Disorder (MSI-BPD). J Pers Disord. 2003;17(6):568-573.", pm:"A screening measure for BPD: the McLean Screening Instrument for Borderline Personality Disorder (MSI-BPD)"},
+         {c:"Chanen AM, Jovev M, Djaja D, et al. Screening for borderline personality disorder in outpatient youth. J Pers Disord. 2008;22(4):353-364.", pm:"Screening for borderline personality disorder in outpatient youth"}]},
+  {n:"SAPAS", f:"Standardised Assessment of Personality – Abbreviated Scale", a:"a", t:"Screening", r:"Clinician interview",
+   k:"8 yes/no questions screening for the presence of any personality disorder; ≥3 is the usual positive threshold.",
+   refs:[{c:"Moran P, Leese M, Lee T, Walters P, Thornicroft G, Mann A. Standardised Assessment of Personality - Abbreviated Scale (SAPAS): preliminary validation of a brief screen for personality disorder. Br J Psychiatry. 2003;183:228-232.", pm:"Standardised Assessment of Personality - Abbreviated Scale (SAPAS)"}]},
+  {n:"ZAN-BPD", f:"Zanarini Rating Scale for Borderline Personality Disorder", a:"a", t:"Severity / monitoring", r:"Clinician",
+   k:"9 items (0–36) tracking change in borderline symptom severity during treatment.",
+   refs:[{c:"Zanarini MC, Vujanovic AA, Parachini EA, Boulanger JL, Frankenburg FR, Hennen J. Zanarini Rating Scale for Borderline Personality Disorder (ZAN-BPD): a continuous measure of DSM-IV borderline psychopathology. J Pers Disord. 2003;17(3):233-242.", pm:"Zanarini Rating Scale for Borderline Personality Disorder (ZAN-BPD)"}]},
+  {n:"SCID-5-PD", f:"Structured Clinical Interview for DSM-5 Personality Disorders", a:"a", t:"Diagnostic interview", r:"Clinician", pr:true,
+   k:"Semi-structured interview for the 10 DSM-5 personality disorders, with an optional screening questionnaire.",
+   refs:[{c:"First MB, Williams JBW, Benjamin LS, Spitzer RL. Structured Clinical Interview for DSM-5 Personality Disorders (SCID-5-PD). Arlington, VA: American Psychiatric Association Publishing; 2016."}]},
+  {n:"PID-5", f:"Personality Inventory for DSM-5", a:"a", t:"Severity / monitoring", r:"Self-report",
+   k:"220-item (and 25-item brief) measure of the five pathological trait domains in the DSM-5 Alternative Model: negative affectivity, detachment, antagonism, disinhibition, psychoticism.",
+   refs:[{c:"Krueger RF, Derringer J, Markon KE, Watson D, Skodol AE. Initial construction of a maladaptive personality trait model and inventory for DSM-5. Psychol Med. 2012;42(9):1879-1890.", pm:"Initial construction of a maladaptive personality trait model and inventory for DSM-5"}]},
+  {n:"PCL-R", f:"Hare Psychopathy Checklist – Revised", a:"a", t:"Diagnostic interview", r:"Clinician (trained)", pr:true,
+   k:"20-item rating from interview and records. Used mainly in forensic settings and requires specialized training.",
+   refs:[{c:"Hare RD. The Hare Psychopathy Checklist-Revised. 2nd ed. Toronto, ON: Multi-Health Systems; 2003."}]},
+  {n:"PAI / MMPI-3", f:"Personality Assessment Inventory / Minnesota Multiphasic Personality Inventory-3", a:"a", t:"Diagnostic interview", r:"Self-report (psychologist-interpreted)", pr:true,
+   k:"Broad-band normed inventories with validity scales, usually administered by psychologists.",
+   refs:[{c:"Morey LC. Personality Assessment Inventory: Professional Manual. Odessa, FL: Psychological Assessment Resources; 1991."},
+         {c:"Ben-Porath YS, Tellegen A. MMPI-3 Manual for Administration, Scoring, and Interpretation. Minneapolis, MN: University of Minnesota Press; 2020."}]}
+  ]},
+
+{ id:"sud", title:"Substance-related and addictive disorders",
+  note:"Use validated screens followed by brief intervention and referral (SBIRT). Withdrawal scales guide symptom-triggered treatment and are not diagnostic instruments.",
+  tools:[
+  {n:"CRAFFT 2.1", f:"Car, Relax, Alone, Forget, Friends, Trouble", a:"c", t:"Screening", r:"Self / clinician", hy:true,
+   k:"Ages 12–21. Part A asks about past-year frequency; Part B asks six yes/no questions, and ≥2 is positive. Endorsed in AAP SBIRT guidance. Free.",
+   refs:[{c:"Knight JR, Sherritt L, Shrier LA, Harris SK, Chang G. Validity of the CRAFFT substance abuse screening test among adolescent clinic patients. Arch Pediatr Adolesc Med. 2002;156(6):607-614.", pm:"Validity of the CRAFFT substance abuse screening test among adolescent clinic patients"},
+         {c:"Mitchell SG, Kelly SM, Gryczynski J, et al. The CRAFFT cut-points and DSM-5 criteria for alcohol and other drugs: a reevaluation and reexamination. Subst Abus. 2014;35(4):376-380.", pm:"The CRAFFT cut-points and DSM-5 criteria for alcohol and other drugs: a reevaluation and reexamination"}]},
+  {n:"S2BI", f:"Screening to Brief Intervention", a:"c", t:"Screening", r:"Self-report",
+   k:"Frequency-based questions that triage adolescents into risk levels (no use, lower risk, higher risk/likely SUD).",
+   refs:[{c:"Levy S, Weiss R, Sherritt L, et al. An electronic screen for triaging adolescent substance use by risk levels. JAMA Pediatr. 2014;168(9):822-828.", pm:"An electronic screen for triaging adolescent substance use by risk levels"}]},
+  {n:"BSTAD", f:"Brief Screener for Tobacco, Alcohol, and other Drugs", a:"c", t:"Screening", r:"Self-report",
+   k:"Brief frequency questions for adolescents with validated cutoffs for identifying SUD.",
+   refs:[{c:"Kelly SM, Gryczynski J, Mitchell SG, Kirk A, O'Grady KE, Schwartz RP. Validity of brief screening instrument for adolescent tobacco, alcohol, and drug use. Pediatrics. 2014;133(5):819-826.", pm:"Validity of brief screening instrument for adolescent tobacco, alcohol, and drug use"}]},
+  {n:"NIAAA Youth Alcohol Screen", f:"Two-question screen (friends' drinking, own drinking)", a:"c", t:"Screening", r:"Clinician",
+   k:"Age-specific risk estimator for ages 9–18 built around two questions.",
+   refs:[{c:"National Institute on Alcohol Abuse and Alcoholism. Alcohol Screening and Brief Intervention for Youth: A Practitioner's Guide. NIH Publication No. 11-7805; 2011."}]},
+  {n:"AUDIT", f:"Alcohol Use Disorders Identification Test", a:"a", t:"Screening", r:"Self / clinician", hy:true,
+   k:"10 WHO items (0–40); ≥8 indicates hazardous or harmful use. Covers consumption, dependence, and harm.",
+   refs:[{c:"Saunders JB, Aasland OG, Babor TF, de la Fuente JR, Grant M. Development of the Alcohol Use Disorders Identification Test (AUDIT): WHO collaborative project on early detection of persons with harmful alcohol consumption—II. Addiction. 1993;88(6):791-804.", pm:"Development of the Alcohol Use Disorders Identification Test (AUDIT): WHO collaborative project"}]},
+  {n:"AUDIT-C", f:"AUDIT – Consumption", a:"a", t:"Screening", r:"Self-report", hy:true,
+   k:"First three AUDIT items. Positive at ≥4 in men and ≥3 in women. Named by USPSTF as a recommended brief screen.",
+   refs:[{c:"Bush K, Kivlahan DR, McDonell MB, Fihn SD, Bradley KA. The AUDIT alcohol consumption questions (AUDIT-C): an effective brief screening test for problem drinking. Arch Intern Med. 1998;158(16):1789-1795.", pm:"The AUDIT alcohol consumption questions (AUDIT-C): an effective brief screening test for problem drinking"}]},
+  {n:"CAGE", f:"Cut down, Annoyed, Guilty, Eye-opener", a:"a", t:"Screening", r:"Clinician", hy:true,
+   k:"4 lifetime items; ≥2 is clinically significant. Detects alcohol dependence better than hazardous drinking. Less sensitive in women and some minority groups.",
+   refs:[{c:"Ewing JA. Detecting alcoholism: the CAGE questionnaire. JAMA. 1984;252(14):1905-1907.", pm:"Detecting alcoholism: the CAGE questionnaire"}]},
+  {n:"Single-question drug screen", f:"\"How many times in the past year have you used an illegal drug or a prescription medication for nonmedical reasons?\"", a:"a", t:"Screening", r:"Clinician",
+   k:"Any answer ≥1 is positive. Highly sensitive in primary care validation.",
+   refs:[{c:"Smith PC, Schmidt SM, Allensworth-Davies D, Saitz R. A single-question screening test for drug use in primary care. Arch Intern Med. 2010;170(13):1155-1160.", pm:"A single-question screening test for drug use in primary care"}]},
+  {n:"DAST-10", f:"Drug Abuse Screening Test", a:"a", t:"Screening", r:"Self-report",
+   k:"10 yes/no items on drug-related problems in the past 12 months (excludes alcohol and tobacco).",
+   refs:[{c:"Skinner HA. The drug abuse screening test. Addict Behav. 1982;7(4):363-371.", pm:"Skinner The drug abuse screening test 1982"}]},
+  {n:"TAPS", f:"Tobacco, Alcohol, Prescription medication, and other Substance use tool", a:"a", t:"Screening", r:"Self / clinician",
+   k:"Two-step screen and brief assessment for primary care, developed through the NIDA Clinical Trials Network.",
+   refs:[{c:"McNeely J, Wu LT, Subramaniam G, et al. Performance of the Tobacco, Alcohol, Prescription Medication, and Other Substance Use (TAPS) tool for substance use screening in primary care patients. Ann Intern Med. 2016;165(10):690-699.", pm:"Performance of the Tobacco, Alcohol, Prescription Medication, and Other Substance Use (TAPS) tool"}]},
+  {n:"ASSIST", f:"Alcohol, Smoking and Substance Involvement Screening Test", a:"a", t:"Screening", r:"Clinician",
+   k:"WHO interview producing substance-specific risk scores that guide brief intervention.",
+   refs:[{c:"WHO ASSIST Working Group. The Alcohol, Smoking and Substance Involvement Screening Test (ASSIST): development, reliability and feasibility. Addiction. 2002;97(9):1183-1194.", pm:"The Alcohol, Smoking and Substance Involvement Screening Test (ASSIST): development, reliability and feasibility"}]},
+  {n:"CUDIT-R", f:"Cannabis Use Disorders Identification Test – Revised", a:"a", t:"Screening", r:"Self-report",
+   k:"8 items; ≥8 suggests hazardous use and ≥12 possible cannabis use disorder.",
+   refs:[{c:"Adamson SJ, Kay-Lambkin FJ, Baker AL, et al. An improved brief measure of cannabis misuse: the Cannabis Use Disorders Identification Test-Revised (CUDIT-R). Drug Alcohol Depend. 2010;110(1-2):137-143.", pm:"An improved brief measure of cannabis misuse: the Cannabis Use Disorders Identification Test-Revised (CUDIT-R)"}]},
+  {n:"FTND", f:"Fagerström Test for Nicotine Dependence", a:"a", t:"Severity / monitoring", r:"Self-report",
+   k:"6 items rating nicotine dependence. Time to first cigarette is the strongest single item.",
+   refs:[{c:"Heatherton TF, Kozlowski LT, Frecker RC, Fagerström KO. The Fagerström Test for Nicotine Dependence: a revision of the Fagerström Tolerance Questionnaire. Br J Addict. 1991;86(9):1119-1127.", pm:"The Fagerström Test for Nicotine Dependence: a revision of the Fagerström Tolerance Questionnaire"}]},
+  {n:"ORT", f:"Opioid Risk Tool", a:"a", t:"Screening", r:"Self / clinician",
+   k:"5 risk factors (family/personal SUD history, age, childhood sexual abuse, psychiatric disorders). 0–3 low, 4–7 moderate, ≥8 high risk of aberrant opioid behaviors.",
+   refs:[{c:"Webster LR, Webster RM. Predicting aberrant behaviors in opioid-treated patients: preliminary validation of the Opioid Risk Tool. Pain Med. 2005;6(6):432-442.", pm:"Predicting aberrant behaviors in opioid-treated patients: preliminary validation of the Opioid Risk Tool"}]},
+  {n:"CIWA-Ar", f:"Clinical Institute Withdrawal Assessment for Alcohol, revised", a:"a", t:"Severity / monitoring", r:"Nurse / clinician", hy:true,
+   k:"10 items (max 67). Scores under about 8–10 indicate mild withdrawal; >15 indicates greater risk of severe withdrawal. Guides symptom-triggered benzodiazepine dosing. Requires a patient who can communicate.",
+   refs:[{c:"Sullivan JT, Sykora K, Schneiderman J, Naranjo CA, Sellers EM. Assessment of alcohol withdrawal: the revised clinical institute withdrawal assessment for alcohol scale (CIWA-Ar). Br J Addict. 1989;84(11):1353-1357.", pm:"Assessment of alcohol withdrawal: the revised clinical institute withdrawal assessment for alcohol scale (CIWA-Ar)"}]},
+  {n:"PAWSS", f:"Prediction of Alcohol Withdrawal Severity Scale", a:"a", t:"Screening", r:"Clinician",
+   k:"Predicts risk of complicated withdrawal (seizures, delirium tremens) in medically ill inpatients; ≥4 indicates high risk.",
+   refs:[{c:"Maldonado JR, Sher Y, Das S, et al. Prospective validation study of the Prediction of Alcohol Withdrawal Severity Scale (PAWSS) in medically ill inpatients: a new scale for the prediction of complicated alcohol withdrawal syndrome. Alcohol Alcohol. 2015;50(5):509-518.", pm:"Prospective validation study of the Prediction of Alcohol Withdrawal Severity Scale (PAWSS)"}]},
+  {n:"COWS", f:"Clinical Opiate Withdrawal Scale", a:"a", t:"Severity / monitoring", r:"Clinician", hy:true,
+   k:"11 items. 5–12 mild, 13–24 moderate, 25–36 moderately severe, >36 severe. Used to time buprenorphine induction.",
+   refs:[{c:"Wesson DR, Ling W. The Clinical Opiate Withdrawal Scale (COWS). J Psychoactive Drugs. 2003;35(2):253-259.", pm:"The Clinical Opiate Withdrawal Scale (COWS)"}]}
+  ]},
+
+{ id:"mov", title:"Medication-induced movement disorders & other adverse effects",
+  note:"There is no separate routine pediatric EPS scale; the adult scales are used in youth on antipsychotics. The APA schizophrenia guideline recommends assessing abnormal involuntary movements at baseline and periodically during antipsychotic treatment (about every 6 months for higher-risk patients, every 12 months otherwise).",
+  tools:[
+  {n:"AIMS", f:"Abnormal Involuntary Movement Scale", a:"b", t:"Adverse effects", r:"Clinician", hy:true,
+   k:"12 items: 7 body areas rated 0–4 plus global judgments, incapacitation, awareness, and dental status. The standard tardive dyskinesia exam; public domain. Used in children and adults.",
+   refs:[{c:"Guy W. ECDEU Assessment Manual for Psychopharmacology. Rockville, MD: US Department of Health, Education, and Welfare; 1976:534-537."}]},
+  {n:"BARS", f:"Barnes Akathisia Rating Scale", a:"b", t:"Adverse effects", r:"Clinician", hy:true,
+   k:"Objective restlessness, subjective awareness and distress, plus a global rating (0–5). Akathisia is linked to nonadherence and distress, and it can be mistaken for agitation or anxiety.",
+   refs:[{c:"Barnes TR. A rating scale for drug-induced akathisia. Br J Psychiatry. 1989;154:672-676.", pm:"A rating scale for drug-induced akathisia"}]},
+  {n:"SAS", f:"Simpson-Angus Scale", a:"b", t:"Adverse effects", r:"Clinician", hy:true,
+   k:"10 items rating drug-induced parkinsonism (rigidity, gait, tremor, glabellar tap, salivation).",
+   refs:[{c:"Simpson GM, Angus JW. A rating scale for extrapyramidal side effects. Acta Psychiatr Scand Suppl. 1970;212:11-19.", pm:"Simpson Angus A rating scale for extrapyramidal side effects 1970"}]},
+  {n:"ESRS", f:"Extrapyramidal Symptom Rating Scale", a:"a", t:"Adverse effects", r:"Clinician",
+   k:"Comprehensive rating of parkinsonism, akathisia, dystonia, and tardive dyskinesia in one instrument.",
+   refs:[{c:"Chouinard G, Margolese HC. Manual for the Extrapyramidal Symptom Rating Scale (ESRS). Schizophr Res. 2005;76(2-3):247-265.", pm:"Manual for the Extrapyramidal Symptom Rating Scale (ESRS)"}]},
+  {n:"DISCUS", f:"Dyskinesia Identification System: Condensed User Scale", a:"b", t:"Adverse effects", r:"Clinician",
+   k:"15-item tardive dyskinesia rating with a total-score cutoff, validated in psychiatric and developmental disability populations.",
+   refs:[{c:"Sprague RL, Kalachnik JE. Reliability, validity, and a total score cutoff for the Dyskinesia Identification System: Condensed User Scale (DISCUS) with mentally ill and mentally retarded populations. Psychopharmacol Bull. 1991;27(1):51-58.", pm:"Reliability, validity, and a total score cutoff for the Dyskinesia Identification System: Condensed User Scale (DISCUS)"}]},
+  {n:"NMS consensus criteria", f:"International Delphi criteria for neuroleptic malignant syndrome", a:"a", t:"Adverse effects", r:"Clinician",
+   k:"Weighted criteria: dopamine antagonist exposure, hyperthermia, rigidity, altered mental status, CK elevation, autonomic instability, and exclusion of other causes.",
+   refs:[{c:"Gurrera RJ, Caroff SN, Cohen A, et al. An international consensus study of neuroleptic malignant syndrome diagnostic criteria using the Delphi method. J Clin Psychiatry. 2011;72(9):1222-1228.", pm:"An international consensus study of neuroleptic malignant syndrome diagnostic criteria using the Delphi method"}]},
+  {n:"Hunter Criteria", f:"Hunter Serotonin Toxicity Criteria", a:"a", t:"Adverse effects", r:"Clinician",
+   k:"Serotonergic agent plus clonus (spontaneous, inducible, or ocular) or other specified features. More specific than the Sternbach criteria. Clonus and hyperreflexia distinguish it from NMS (bradyreflexia, lead-pipe rigidity).",
+   refs:[{c:"Dunkley EJ, Isbister GK, Sibbritt D, Dawson AH, Whyte IM. The Hunter Serotonin Toxicity Criteria: simple and accurate diagnostic decision rules for serotonin toxicity. QJM. 2003;96(9):635-642.", pm:"The Hunter Serotonin Toxicity Criteria: simple and accurate diagnostic decision rules for serotonin toxicity"}]},
+  {n:"MDS-UPDRS", f:"Movement Disorder Society – Unified Parkinson's Disease Rating Scale", a:"a", t:"Severity / monitoring", r:"Clinician + patient",
+   k:"Standard Parkinson disease rating across non-motor and motor experiences, motor examination, and motor complications. Relevant to psychosis, depression, and dementia in Parkinson disease.",
+   refs:[{c:"Goetz CG, Tilley BC, Shaftman SR, et al. Movement Disorder Society-sponsored revision of the Unified Parkinson's Disease Rating Scale (MDS-UPDRS): scale presentation and clinimetric testing results. Mov Disord. 2008;23(15):2129-2170.", pm:"Movement Disorder Society-sponsored revision of the Unified Parkinson's Disease Rating Scale (MDS-UPDRS)"}]}
+  ]},
+
+{ id:"sui", title:"Suicide risk",
+  note:"A screen identifies who needs a full suicide risk assessment; it does not predict who will die by suicide. Pair screening with safety planning and lethal-means counseling.",
+  tools:[
+  {n:"SIQ / SIQ-JR", f:"Suicidal Ideation Questionnaire", a:"c", t:"Severity / monitoring", r:"Self-report", pr:true,
+   k:"Adolescent self-report of suicidal ideation severity (SIQ for grades 10–12, SIQ-JR for grades 7–9).",
+   refs:[{c:"Reynolds WM. Suicidal Ideation Questionnaire: Professional Manual. Odessa, FL: Psychological Assessment Resources; 1988."}]},
+  {n:"ASQ", f:"Ask Suicide-Screening Questions", a:"b", t:"Screening", r:"Clinician", hy:true,
+   k:"4 yes/no questions plus an acuity question (Q5) for patients 8 and older. Any 'yes' is positive and triggers a brief suicide safety assessment. Validated in pediatric ED patients and adult medical inpatients. Public domain (NIMH toolkit).",
+   refs:[{c:"Horowitz LM, Bridge JA, Teach SJ, et al. Ask Suicide-Screening Questions (ASQ): a brief instrument for the pediatric emergency department. Arch Pediatr Adolesc Med. 2012;166(12):1170-1176.", pm:"Ask Suicide-Screening Questions (ASQ): a brief instrument for the pediatric emergency department"},
+         {c:"Horowitz LM, Snyder DJ, Boudreaux ED, et al. Validation of the Ask Suicide-Screening Questions for adult medical inpatients: a brief tool for all ages. Psychosomatics. 2020;61(6):713-722.", pm:"Validation of the Ask Suicide-Screening Questions for adult medical inpatients: a brief tool for all ages"}]},
+  {n:"C-SSRS", f:"Columbia-Suicide Severity Rating Scale", a:"b", t:"Screening", r:"Clinician", hy:true,
+   k:"Rates ideation severity (passive wish through intent with plan), intensity, and suicidal behavior. Has screener, full, pediatric, and lifetime/recent versions. Active ideation with intent or plan, or recent suicidal behavior, indicates high risk. Free with training.",
+   refs:[{c:"Posner K, Brown GK, Stanley B, et al. The Columbia-Suicide Severity Rating Scale: initial validity and internal consistency findings from three multisite studies with adolescents and adults. Am J Psychiatry. 2011;168(12):1266-1277.", pm:"The Columbia-Suicide Severity Rating Scale: initial validity and internal consistency findings from three multisite studies"}]},
+  {n:"PHQ-9 item 9", f:"Thoughts of being better off dead or self-harm", a:"a", t:"Screening", r:"Self-report",
+   k:"In a large health-system cohort, frequency of thoughts on item 9 predicted later suicide attempt and death. Any positive response needs same-day assessment.",
+   refs:[{c:"Simon GE, Rutter CM, Peterson D, et al. Does response on the PHQ-9 Depression Questionnaire predict subsequent suicide attempt or suicide death? Psychiatr Serv. 2013;64(12):1195-1202.", pm:"Does response on the PHQ-9 Depression Questionnaire predict subsequent suicide attempt or suicide death"}]},
+  {n:"BSS", f:"Beck Scale for Suicide Ideation", a:"a", t:"Severity / monitoring", r:"Clinician / self",
+   k:"19 items rating the intensity of current suicidal ideation, including attitudes, plans, and deterrents.",
+   refs:[{c:"Beck AT, Kovacs M, Weissman A. Assessment of suicidal intention: the Scale for Suicide Ideation. J Consult Clin Psychol. 1979;47(2):343-352.", pm:"Assessment of suicidal intention: the Scale for Suicide Ideation"}]},
+  {n:"BHS", f:"Beck Hopelessness Scale", a:"a", t:"Severity / monitoring", r:"Self-report",
+   k:"20 true/false items. Hopelessness is a well-established suicide risk factor independent of depression severity.",
+   refs:[{c:"Beck AT, Weissman A, Lester D, Trexler L. The measurement of pessimism: the hopelessness scale. J Consult Clin Psychol. 1974;42(6):861-865.", pm:"The measurement of pessimism: the hopelessness scale"}]},
+  {n:"SBQ-R", f:"Suicidal Behaviors Questionnaire – Revised", a:"a", t:"Screening", r:"Self-report",
+   k:"4 items covering lifetime ideation/attempts, past-year frequency, threat of attempt, and likelihood of future behavior.",
+   refs:[{c:"Osman A, Bagge CL, Gutierrez PM, Konick LC, Kopper BA, Barrios FX. The Suicidal Behaviors Questionnaire-Revised (SBQ-R): validation with clinical and nonclinical samples. Assessment. 2001;8(4):443-454.", pm:"The Suicidal Behaviors Questionnaire-Revised (SBQ-R): validation with clinical and nonclinical samples"}]},
+  {n:"SAFE-T", f:"Suicide Assessment Five-step Evaluation and Triage", a:"a", t:"Diagnostic interview", r:"Clinician",
+   k:"Framework rather than a scored scale: identify risk factors, identify protective factors, conduct suicide inquiry, determine risk level and intervention, document.",
+   refs:[{c:"Substance Abuse and Mental Health Services Administration. Suicide Assessment Five-step Evaluation and Triage (SAFE-T). HHS Publication No. (SMA) 09-4432; 2009."}]},
+  {n:"Safety Planning Intervention", f:"Stanley-Brown Safety Plan", a:"b", t:"Severity / monitoring", r:"Clinician + patient",
+   k:"Not a screening tool. A brief, evidence-informed intervention completed after a positive screen, covering warning signs, coping, contacts, professional help, and means restriction.",
+   refs:[{c:"Stanley B, Brown GK. Safety planning intervention: a brief intervention to mitigate suicide risk. Cogn Behav Pract. 2012;19(2):256-264.", pm:"Safety planning intervention: a brief intervention to mitigate suicide risk"}]}
+  ]}
+];
+
+const GUIDES = [
+  {t:"USPSTF – Depression and suicide risk in adults (2023):", s:"Recommends depression screening in adults, including pregnant/postpartum persons and older adults; evidence insufficient for suicide risk screening.", c:"Barry MJ, Nicholson WK, Silverstein M, et al. Screening for depression and suicide risk in adults: US Preventive Services Task Force recommendation statement. JAMA. 2023;329(23):2057-2067.", pm:"Screening for depression and suicide risk in adults: US Preventive Services Task Force recommendation statement"},
+  {t:"USPSTF – Anxiety disorders in adults (2023):", s:"Recommends screening adults 64 and younger, including pregnant/postpartum persons; insufficient evidence at 65 and older.", c:"Barry MJ, Nicholson WK, Silverstein M, et al. Screening for anxiety disorders in adults: US Preventive Services Task Force recommendation statement. JAMA. 2023;329(24):2163-2170.", pm:"Screening for anxiety disorders in adults: US Preventive Services Task Force recommendation statement"},
+  {t:"USPSTF – Depression and suicide risk in children and adolescents (2022):", s:"Recommends MDD screening ages 12–18; insufficient evidence for suicide risk screening.", c:"Mangione CM, Barry MJ, Nicholson WK, et al. Screening for depression and suicide risk in children and adolescents: US Preventive Services Task Force recommendation statement. JAMA. 2022;328(15):1534-1542.", pm:"Screening for depression and suicide risk in children and adolescents: US Preventive Services Task Force recommendation statement"},
+  {t:"USPSTF – Anxiety in children and adolescents (2022):", s:"Recommends anxiety screening ages 8–18.", c:"Mangione CM, Barry MJ, Nicholson WK, et al. Screening for anxiety in children and adolescents: US Preventive Services Task Force recommendation statement. JAMA. 2022;328(14):1438-1444.", pm:"Screening for anxiety in children and adolescents: US Preventive Services Task Force recommendation statement"},
+  {t:"USPSTF – Unhealthy alcohol use in adolescents and adults (2018):", s:"Recommends screening adults 18+ (AUDIT-C or single-question screen) with brief counseling.", c:"US Preventive Services Task Force; Curry SJ, Krist AH, Owens DK, et al. Screening and behavioral counseling interventions to reduce unhealthy alcohol use in adolescents and adults: US Preventive Services Task Force recommendation statement. JAMA. 2018;320(18):1899-1909.", pm:"Screening and behavioral counseling interventions to reduce unhealthy alcohol use in adolescents and adults"},
+  {t:"USPSTF – Unhealthy drug use (2020):", s:"Recommends asking adults 18+ about unhealthy drug use when accurate diagnosis and care can be offered.", c:"US Preventive Services Task Force; Krist AH, Davidson KW, Mangione CM, et al. Screening for unhealthy drug use: US Preventive Services Task Force recommendation statement. JAMA. 2020;323(22):2301-2309.", pm:"Screening for unhealthy drug use: US Preventive Services Task Force recommendation statement"},
+  {t:"USPSTF – Cognitive impairment in older adults (2020):", s:"Insufficient evidence for routine population screening; case-finding when concerns arise remains appropriate.", c:"US Preventive Services Task Force; Owens DK, Davidson KW, Krist AH, et al. Screening for cognitive impairment in older adults: US Preventive Services Task Force recommendation statement. JAMA. 2020;323(8):757-763.", pm:"Screening for cognitive impairment in older adults: US Preventive Services Task Force recommendation statement"},
+  {t:"AAP – ADHD clinical practice guideline (2019):", s:"Diagnosis requires DSM criteria with information from multiple informants and settings; standardized rating scales support this.", c:"Wolraich ML, Hagan JF Jr, Allan C, et al. Clinical practice guideline for the diagnosis, evaluation, and treatment of attention-deficit/hyperactivity disorder in children and adolescents. Pediatrics. 2019;144(4):e20192528.", pm:"Clinical practice guideline for the diagnosis, evaluation, and treatment of attention-deficit/hyperactivity disorder in children and adolescents"},
+  {t:"AAP – Autism spectrum disorder (2020):", s:"Recommends developmental surveillance plus ASD-specific screening at 18 and 24 months.", c:"Hyman SL, Levy SE, Myers SM; Council on Children with Disabilities, Section on Developmental and Behavioral Pediatrics. Identification, evaluation, and management of children with autism spectrum disorder. Pediatrics. 2020;145(1):e20193447.", pm:"Identification, evaluation, and management of children with autism spectrum disorder"},
+  {t:"AAP – Substance use SBIRT (2016):", s:"Recommends universal adolescent substance use screening with validated tools.", c:"Levy SJ, Williams JF; Committee on Substance Use and Prevention. Substance use screening, brief intervention, and referral to treatment. Pediatrics. 2016;138(1):e20161211.", pm:"Substance use screening, brief intervention, and referral to treatment Pediatrics 2016"},
+  {t:"APA – Practice guideline for schizophrenia (2020):", s:"Recommends quantitative measures to track symptoms and function, and periodic assessment for abnormal involuntary movements.", c:"Keepers GA, Fochtmann LJ, Anzia JM, et al. The American Psychiatric Association practice guideline for the treatment of patients with schizophrenia. Am J Psychiatry. 2020;177(9):868-872.", pm:"The American Psychiatric Association practice guideline for the treatment of patients with schizophrenia"}
+];
+
+/* ---------- RENDER ---------- */
+const state = { q:"", age:"all", type:"", hy:false };
+const AGE = { c:["Children & adolescents","c"], a:["Adults","a"], b:["Both age groups","b"] };
+const esc = s => String(s).replace(/[&<>"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+
+function matches(t){
+  if (state.hy && !t.hy) return false;
+  if (state.type && t.t !== state.type) return false;
+  if (state.age === "c" && t.a === "a") return false;
+  if (state.age === "a" && t.a === "c") return false;
+  if (state.q){
+    const hay = (t.n+" "+t.f+" "+t.k+" "+t.r+" "+t.t+" "+t._cat+" "+t.refs.map(r=>r.c).join(" ")).toLowerCase();
+    return state.q.split(/\s+/).every(w => hay.includes(w));
+  }
+  return true;
+}
+
+function toolHTML(t){
+  const ageB = t.a==="c" ? '<span class="b c">Children & adolescents</span>' : t.a==="a" ? '<span class="b a">Adults</span>' : '<span class="b bo">Children & adults</span>';
+  const refs = t.refs.map(r => `<li>${esc(r.c)}${r.pm ? ` <a href="${PM(r.pm)}" target="_blank" rel="noopener">PubMed ↗</a>` : ""}</li>`).join("");
+  return `<article class="tool${t.hy?" hy":""}">
+    <div class="thead"><span class="tname">${esc(t.n)}</span><span class="tfull">${esc(t.f)}</span></div>
+    <div class="badges">${ageB}<span class="b">${esc(t.t)}</span><span class="b">${esc(t.r)}</span>${t.hy?'<span class="b hy">★ High-yield</span>':""}${t.pr?'<span class="b pr">Proprietary/licensed</span>':""}</div>
+    <p>${esc(t.k)}</p>
+    <ul class="refs">${refs}</ul>
+  </article>`;
+}
+
+function render(){
+  const main = document.getElementById("main");
+  let html = "", total = 0, shown = 0;
+  DATA.forEach(cat => {
+    let secHTML = "";
+    ["c","a","b"].forEach(g => {
+      const list = cat.tools.filter(t => t.a===g);
+      total += list.length;
+      const vis = list.filter(matches);
+      shown += vis.length;
+      if (vis.length) secHTML += `<h3 class="grp ${g}">${AGE[g][0]}</h3>` + vis.map(toolHTML).join("");
+    });
+    if (secHTML) html += `<section class="cat" id="${cat.id}"><h2>${esc(cat.title)}</h2><p class="catnote">${esc(cat.note)}</p>${secHTML}</section>`;
+  });
+  main.innerHTML = html;
+  document.getElementById("count").textContent = `Showing ${shown} of ${total} tools`;
+  document.getElementById("empty").style.display = shown ? "none" : "block";
+  document.getElementById("nav").innerHTML = DATA.filter(c => document.getElementById(c.id))
+    .map(c => `<a href="#${c.id}">${esc(c.title.replace(/ \(.*?\)/g,"").replace(/ &.*/,""))}</a>`).join("") + '<a href="#guidelines">Guidelines</a>';
+}
+
+DATA.forEach(c => c.tools.forEach(t => t._cat = c.title));
+document.getElementById("guide").innerHTML = GUIDES.map(g =>
+  `<li><strong>${esc(g.t)}</strong> ${esc(g.s)}<div class="refline">${esc(g.c)} <a href="${PM(g.pm)}" target="_blank" rel="noopener">PubMed ↗</a></div></li>`).join("");
+
+document.getElementById("q").addEventListener("input", e => { state.q = e.target.value.trim().toLowerCase(); render(); });
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x===b ? "true" : "false"));
+  state.age = b.dataset.age; render();
+}));
+document.getElementById("type").addEventListener("change", e => { state.type = e.target.value; render(); });
+document.getElementById("hy").addEventListener("change", e => { state.hy = e.target.checked; render(); });
+document.getElementById("theme").addEventListener("click", () => {
+  const r = document.documentElement;
+  const dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  r.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("theme", r.dataset.theme); } catch(e){}
+});
+try { const s = localStorage.getItem("theme"); if (s) document.documentElement.dataset.theme = s; } catch(e){}
+
+render();
+</script>
+</body>
+</html>
